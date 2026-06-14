@@ -1,6 +1,6 @@
-# Notes and Guides
+# Documents and Guides
 
-A personal collection of technical notes and guides I share with students and colleagues. Each entry is a standalone Markdown file; this page is the index.
+A personal collection of technical notes, documents, and guides I share with students and colleagues. Each entry is a standalone Markdown file; this page is the index.
 
 ## Index
 
