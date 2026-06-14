@@ -10,7 +10,7 @@ A short field guide to the main ways you can put a large language model to work 
 > [!TIP]
 > **TL;DR.** If you just want a recommendation: install [Positron](https://positron.posit.co/) and run [Claude Code](https://www.anthropic.com/claude-code) in its integrated terminal, then register the [`btw`](https://posit-dev.github.io/btw/) MCP server so the agent can read your installed-package documentation and the live objects in your R session. Add [`renv`](https://rstudio.github.io/renv/) for reproducibility. Everything below is context for when that default does not fit; see [the recommended stack](#a-recommended-default-stack) for the full picture.
 
-## Contents
+---
 
 - [Quick chooser](#quick-chooser)
 - [1. Separate assistant and R session](#1-separate-assistant-and-r-session)
@@ -27,6 +27,8 @@ A short field guide to the main ways you can put a large language model to work 
 - [Reproducibility and sandboxing](#reproducibility-and-sandboxing)
 - [A recommended default stack](#a-recommended-default-stack)
 - [Selected references](#selected-references)
+
+---
 
 ## Quick chooser
 
@@ -164,7 +166,7 @@ Drop to `mcptools` directly when you want to expose *arbitrary custom R function
 
    ```r
    library(btw)
-   btw(mtcars)                                  # describe a data frame
+   btw(mtcars)                                      # describe a data frame
    btw("{dplyr}", "How do I group and summarize?")  # add package docs plus a question
    ```
 
