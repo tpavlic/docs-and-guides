@@ -1,4 +1,6 @@
-# Documents and Guides
+# Notes, Documents, and Guides
+
+![Notes, Documents, & Guides](.github/banner.png)
 
 A personal collection of technical notes, documents, and guides I share with students and colleagues. Each entry is a standalone Markdown file; this page is the index.
 
