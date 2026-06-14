@@ -30,17 +30,17 @@ A short field guide to the main ways you can put a large language model to work 
 
 ## Quick chooser
 
-| If you want to...                                        | Reach for                                                     |
-| -------------------------------------------------------- | ------------------------------------------------------------- |
-| Ask one-off questions, paste a traceback                 | [A stand-alone chat](#copy-and-paste-stand-alone-chat)        |
-| Gather session context to paste into any chat            | [`btw()`](#btw-the-connective-layer)                          |
-| Have an external agent operate R or a cloud session       | [A browser- or desktop-driving agent](#agents-that-drive-your-browser-or-desktop) |
-| Run R without a local install                             | [A cloud notebook or IDE](#where-r-runs-in-the-web-browser-cloud-options)   |
-| Get inline completions and chat without leaving the IDE   | [An in-IDE assistant](#2-in-ide-assistants)                   |
-| Hand off a multi-file task to an agent                    | [An agentic CLI](#3-agentic-cli-claude-code-codex-and-gemini) |
-| Let an agent see your real session and package docs       | [R as an MCP server](#r-as-the-server-mcptools-and-btw)       |
-| Call an LLM *from inside* your R code                     | [`ellmer`](#r-as-the-client-ellmer)                           |
-| Pin versions or sandbox an autonomous agent               | [Docker and `renv`](#reproducibility-and-sandboxing)          |
+| If you want to...                                       | Reach for                                                                         |
+| ------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| Ask one-off questions, paste a traceback                | [A stand-alone chat](#copy-and-paste-stand-alone-chat)                            |
+| Gather session context to paste into any chat           | [`btw()`](#btw-the-connective-layer)                                              |
+| Have an external agent operate R or a cloud session     | [A browser- or desktop-driving agent](#agents-that-drive-your-browser-or-desktop) |
+| Run R without a local install                           | [A cloud notebook or IDE](#where-r-runs-in-the-web-browser-cloud-options)         |
+| Get inline completions and chat without leaving the IDE | [An in-IDE assistant](#2-in-ide-assistants)                                       |
+| Hand off a multi-file task to an agent                  | [An agentic CLI](#3-agentic-cli-claude-code-codex-and-gemini)                     |
+| Let an agent see your real session and package docs     | [R as an MCP server](#r-as-the-server-mcptools-and-btw)                           |
+| Call an LLM *from inside* your R code                   | [`ellmer`](#r-as-the-client-ellmer)                                               |
+| Pin versions or sandbox an autonomous agent             | [Docker and `renv`](#reproducibility-and-sandboxing)                              |
 
 ## 1. Separate assistant and R session
 
