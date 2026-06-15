@@ -42,6 +42,9 @@ This is the recommended default for most people. **Steps 1–3 are all you need 
 
 2. **[Claude Code](https://www.anthropic.com/claude-code) in Positron's terminal** (or via its editor extension) for agentic, multi-file tasks — signed in with your Claude subscription, not a metered API key.
 
+   - The Claude Code extension is the recommended interface, but running `claude` in the Positron terminal is also workable.
+   - Most other popular coding assistants (e.g., Codex) also have extensions (and can be used within the terminal).
+
 3. **[`btw`](https://posit-dev.github.io/btw/) MCP server** so the agent reads your live session and package docs rather than guessing. Three one-time actions:
 
    Install it in R:
@@ -63,6 +66,8 @@ This is the recommended default for most people. **Steps 1–3 are all you need 
      btw::btw_mcp_session()
    }
    ```
+
+   If you are using another coding assistant, such as Codex, the MCP registration will be slightly different. If you ask your coding assistant how to register the `r-btw` MCP server, it will likely either do it for you or tell you exactly how to complete the task.
 
 4. **Recommended and special-case additions** (none are required for the LLM link itself):
    - **[`renv`](https://rstudio.github.io/renv/)** — strongly recommended as reproducibility best practice; it pins your package versions but has nothing to do with the LLM wiring above. Reach for **[Docker](https://rocker-project.org/)** when you need a clean room or sandbox.
