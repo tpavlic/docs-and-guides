@@ -17,12 +17,16 @@ A short field guide to the main ways you can put a large language model to work 
   - [Copy and paste (stand-alone chat)](#copy-and-paste-stand-alone-chat)
   - [Agents that drive your browser or desktop](#agents-that-drive-your-browser-or-desktop)
   - [Where R runs in the web browser: cloud options](#where-r-runs-in-the-web-browser-cloud-options)
-- [2. In-IDE assistants](#2-in-ide-assistants)
+- [2. Assistants built into editors and Integrated Development Environments (IDEs)](#2-assistants-built-into-editors-and-integrated-development-environments-ides)
+  - [Purpose-built R IDEs: Positron and RStudio](#purpose-built-r-ides-positron-and-rstudio)
+  - [General-purpose editors you assemble: VS Code](#general-purpose-editors-you-assemble-vs-code)
+  - [Choosing between Positron, RStudio, and VS Code](#choosing-between-positron-rstudio-and-vs-code)
 - [3. Agentic CLI: Claude Code, Codex, and Gemini](#3-agentic-cli-claude-code-codex-and-gemini)
 - [4. Native R tooling: ellmer, btw, and mcptools](#4-native-r-tooling-ellmer-btw-and-mcptools)
   - [R as the client: ellmer](#r-as-the-client-ellmer)
   - [R as the server: mcptools and btw](#r-as-the-server-mcptools-and-btw)
   - [btw: the connective layer](#btw-the-connective-layer)
+  - [Force multiplier for any editor: the bridge across the setups above](#force-multiplier-for-any-editor-the-bridge-across-the-setups-above)
 - [Cross-cutting cautions](#cross-cutting-cautions)
 - [Reproducibility and sandboxing](#reproducibility-and-sandboxing)
 - [A recommended default stack](#a-recommended-default-stack)
@@ -32,17 +36,17 @@ A short field guide to the main ways you can put a large language model to work 
 
 ## Quick chooser
 
-| If you want to...                                       | Reach for                                                                         |
-| ------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| Ask one-off questions, paste a traceback                | [A stand-alone chat](#copy-and-paste-stand-alone-chat)                            |
-| Gather session context to paste into any chat           | [`btw()`](#btw-the-connective-layer)                                              |
-| Have an external agent operate R or a cloud session     | [A browser- or desktop-driving agent](#agents-that-drive-your-browser-or-desktop) |
-| Run R without a local install                           | [A cloud notebook or IDE](#where-r-runs-in-the-web-browser-cloud-options)         |
-| Get inline completions and chat without leaving the IDE | [An in-IDE assistant](#2-in-ide-assistants)                                       |
-| Hand off a multi-file task to an agent                  | [An agentic CLI](#3-agentic-cli-claude-code-codex-and-gemini)                     |
-| Let an agent see your real session and package docs     | [R as an MCP server](#r-as-the-server-mcptools-and-btw)                           |
-| Call an LLM *from inside* your R code                   | [`ellmer`](#r-as-the-client-ellmer)                                               |
-| Pin versions or sandbox an autonomous agent             | [Docker and `renv`](#reproducibility-and-sandboxing)                              |
+| If you want to...                                       | Reach for                                                                                            |
+| ------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| Ask one-off questions, paste a traceback                | [A stand-alone chat](#copy-and-paste-stand-alone-chat)                                               |
+| Gather session context to paste into any chat           | [`btw()`](#btw-the-connective-layer)                                                                 |
+| Have an external agent operate R or a cloud session     | [A browser- or desktop-driving agent](#agents-that-drive-your-browser-or-desktop)                    |
+| Run R without a local install                           | [A cloud notebook or IDE](#where-r-runs-in-the-web-browser-cloud-options)                            |
+| Get inline completions and chat without leaving the IDE | [An in-IDE assistant](#2-assistants-built-into-editors-and-integrated-development-environments-ides) |
+| Hand off a multi-file task to an agent                  | [An agentic CLI](#3-agentic-cli-claude-code-codex-and-gemini)                                        |
+| Let an agent see your real session and package docs     | [R as an MCP server](#r-as-the-server-mcptools-and-btw)                                              |
+| Call an LLM *from inside* your R code                   | [`ellmer`](#r-as-the-client-ellmer)                                                                  |
+| Pin versions or sandbox an autonomous agent             | [Docker and `renv`](#reproducibility-and-sandboxing)                                                 |
 
 ## 1. Separate assistant and R session
 
@@ -50,13 +54,13 @@ In this category the LLM runs as its own application, completely outside your R 
 
 ### Copy and paste (stand-alone chat)
 
-Pasting code and output into a chat window works and needs no setup. Most people do this in [Claude Desktop](https://claude.ai/download), [claude.ai](https://claude.ai/), or [ChatGPT](https://chatgpt.com/). It is fine for quick conceptual questions, explaining an error, or sketching an approach. The cost is friction and context loss: you hand-copy column names, sample rows, error messages, and structure, and the model still guesses at things it cannot see. You can cut most of that friction with the [`btw()`](#btw-the-connective-layer) function, which gathers a structured snapshot of your session and copies it to the clipboard, ready to paste into any chat. But know that the rest of this guide exists to remove the copying entirely.
+Pasting code and output into a chat window works and needs no setup. Most people do this in [Claude Desktop](https://claude.ai/download), [claude.ai](https://claude.ai/), [ChatGPT](https://chatgpt.com/), or [Gemini](https://gemini.google.com/). It is fine for quick conceptual questions, explaining an error, or sketching an approach. The cost is friction and context loss: you hand-copy column names, sample rows, error messages, and structure, and the model still guesses at things it cannot see. You can cut most of that friction with the [`btw()`](#btw-the-connective-layer) function, which gathers a structured snapshot of your session and copies it to the clipboard, ready to paste into any chat. But know that the rest of this guide exists to remove the copying entirely.
 
 ### Agents that drive your browser or desktop
 
 A newer and more automated variant: instead of you ferrying text, an agent operates an application on your behalf. These are genuinely useful but still maturing, so treat them as experimental and keep a human in the loop.
 
-- **Browser-operating agents** such as [Perplexity's Comet](https://www.perplexity.ai/comet) and [Claude for Chrome](https://www.anthropic.com/news/claude-for-chrome) can read and act inside web pages. Pointed at a browser-based R session (see below), they can edit a cell, run it, and read the result without your copy-paste.
+- **Browser-operating agents** such as [Perplexity's Comet](https://www.perplexity.ai/comet), [Claude for Chrome](https://www.anthropic.com/news/claude-for-chrome), and Chrome's built-in [Gemini "Auto Browse"](https://blog.google/products-and-platforms/products/chrome/gemini-3-auto-browse/) can read and act inside web pages. Pointed at a browser-based R session (see below), they can edit a cell, run it, and read the result without your copy-paste.
 - **Desktop-operating agents.** ChatGPT's [Work with Apps on macOS](https://help.openai.com/en/articles/10119604-work-with-apps-on-macos) can read and edit code in supported editors, including VS Code and its forks (which covers Positron), JetBrains IDEs, and Xcode, as well as Terminal, iTerm, and Warp. OpenAI's newer Codex desktop app goes further, controlling local tools and acting on whatever is on screen. For R specifically, the editor and terminal integrations cover R code open in a VS Code fork like Positron, or an `R` session running in a terminal; the more autonomous screen-control agents can in principle drive other setups too, such as RStudio or the standalone R GUI (R.app on macOS). These earn their keep when your R lives somewhere without a built-in assistant, so an RStudio user or someone in a bare terminal gains more here than a Positron user, who already has an assistant in the IDE.
 
 > [!CAUTION]
@@ -71,15 +75,58 @@ Browser-driving agents pair naturally with R that already lives in the browser, 
 
 > *Aside:* [WebR](https://docs.r-wasm.org/webr/latest/) is R compiled to WebAssembly, so it runs entirely in the browser with no server. It is excellent for *embedding* R into web pages and interactive teaching materials, but it is a poor host for an agentic coding loop. Use it to ship R-backed widgets, not to write code with an assistant.
 
-## 2. In-IDE assistants
+## 2. Assistants built into editors and Integrated Development Environments (IDEs)
 
 These live inside your editor and can see your files and editor context. Worth setting expectations up front: most of them reason from your *open files and project*, not from the objects in your *running* R session. An assistant can read a script that fits a model, but it does not, by default, see the fitted object sitting in your environment. Positron Assistant is somewhat more session-aware than plain autocompletion, but the general rule holds, and closing that gap is what [section 4](#4-native-r-tooling-ellmer-btw-and-mcptools) is for.
 
+These tools split into two families. **Purpose-built R IDEs** ship the assistant and the data-science panes together, so there is little to assemble. **General-purpose editors** are the reverse: the assistant ecosystem is the main draw, and the R niceties are something you add back yourself. Switching to a general editor is often the shortest path to the best LLM tooling, which simply relocates the question to *how do I turn a general editor into a good R IDE* — answered in the second subsection.
+
+### Purpose-built R IDEs: Positron and RStudio
+
 - **[Positron](https://positron.posit.co/) Assistant.** Positron is Posit's polyglot, VS Code-based IDE (built on Code-OSS) aimed at R and Python side by side. Its Assistant is built in and Claude-powered, with both a chat sidebar and an agent mode; the agent can scan your project, detect the R version, write code, and run it with your approval. No extra wiring required. It bills against your own Anthropic key, so cost is a real consideration for token-heavy agentic loops. If you are coming from RStudio, Positron also ships interactive Walkthroughs (on the *Welcome* page, or via *Help > Welcome*), including a **"Migrating from RStudio to Positron"** guide that maps familiar RStudio features to their Positron equivalents.
 - **[RStudio](https://posit.co/download/rstudio-desktop/) with GitHub Copilot.** Copilot has been built into RStudio natively since the 2023.09 release; you do not install a separate plugin. Enable it under *Tools > Global Options* in the **Copilot** pane (newer builds expose an **Assistant** pane with a "Use code assistant" dropdown instead), let it download the Copilot Agent components, then sign in with the device-code flow and authorize the plugin. It needs a [GitHub Copilot subscription](https://github.com/features/copilot), which is free for verified students and educators. You get ghost-text completions drawn from your active document, and you can widen the context with the "Index project files" setting. Posit has also been rolling its own Assistant into RStudio. RStudio remains the reference experience for the Shiny run/hot-reload loop, the devtools Build pane, and deep R Markdown and Sweave support.
-- **[VS Code](https://code.visualstudio.com/).** R support comes from the [R extension](https://marketplace.visualstudio.com/items?itemName=REditorSupport.r), and Posit's [Air](https://posit-dev.github.io/air/) (a fast R formatter and language server) installs as its own extension from the VS Code Marketplace, found by searching "Air" in the Extensions pane. The extension bundles its own binary, so there is nothing else to set up, and it comes pre-installed in Positron. On the AI side you have several options layered on top: GitHub Copilot now includes an agent mode, and both [Claude Code](https://www.anthropic.com/claude-code) and OpenAI's Codex ship VS Code extensions. The catch for R work specifically is that you give up the data-science panes (console, Data Explorer, Variables, plots) that Positron and RStudio provide out of the box.
 
-**Which IDE?** Positron and RStudio are both from Posit and install side by side; Posit maintains both and has set no deprecation timeline for RStudio. Positron is under much heavier active development and wins on polyglot R/Python work, multiple R versions and concurrent sessions, the Data Explorer, the VS Code extension marketplace, remote sessions, and running the interpreter separately from the IDE (so a crash in R need not take the IDE down); it also opens Jupyter notebooks natively with full R and Python kernels, which RStudio does not do at all. RStudio still leads on Shiny and package development. Plain VS Code is the most flexible host for AI extensions and the least specialized for R, since the data-science niceties are not built in. A common pattern among experienced users is to keep more than one installed and open whichever fits the task; see Posit's own [feature comparison](https://positron.posit.co/migrate-rstudio-compare.html).
+### General-purpose editors you assemble: VS Code
+
+[VS Code](https://code.visualstudio.com/) is the leading example, and the reason to reach for it in R work is that it is the most flexible host for AI extensions: GitHub Copilot's agent mode, [Claude Code](https://www.anthropic.com/claude-code), and OpenAI's Codex all ship as VS Code extensions. The catch is that you start without the data-science panes (console, Data Explorer, Variables, plots) that Positron and RStudio provide out of the box, so making VS Code a genuine RStudio competitor means assembling a few pieces yourself. (Positron, notably, is itself a VS Code fork that Posit has pre-assembled into exactly this, so the steps below are roughly what it does for you.)
+
+1. **Language support.** Install the [R extension](https://marketplace.visualstudio.com/items?itemName=REditorSupport.r) for syntax highlighting, completion, the terminal integration, and the data, plot, and variable viewers. Posit's [Air](https://posit-dev.github.io/air/) (a fast R formatter and language server) installs as its own extension, found by searching "Air" in the Extensions pane; it bundles its own binary, so there is nothing else to set up, and it comes pre-installed in Positron.
+
+2. **Plots.** Once the R session is attached (see the troubleshooting tip below), plots render automatically in a tab beside your editor through the extension's built-in PNG viewer — no extra setup, since plot capture is part of the session watcher. For a more interactive viewer that resizes, zooms, keeps a plot history, and follows your light/dark theme like RStudio's pane, there are two solid options:
+
+   - [`httpgd`](https://nx10.dev/httpgd/articles/b01_vscode.html) upgrades the extension's built-in viewer in place. Install it in R with `install.packages("httpgd")`, then enable the `r.plot.useHttpgd` setting (Cmd/Ctrl+`,` to open Settings, then search for it). **Restart the R session afterward:** the graphics device is chosen when the session attaches, so the toggle does nothing until you start a fresh R terminal. Plots then open as a resizable SVG tab beside your editor.
+
+   - For the closest thing to RStudio's Plots pane, the third-party [R Plot Pro](https://marketplace.visualstudio.com/items?itemName=ofurkancoban.r-plot-pro) extension lives in the bottom panel beside the terminal and wraps plots in familiar chrome: a toolbar for paging back and forth through plot history, zooming, and saving or exporting, plus a thumbnail history strip down the side. RStudio migrants tend to find it the most recognizable of the options.
+
+3. **AI layer.** This is the payoff that motivated the move to VS Code in the first place: layer on whichever assistant you want, each as an extension — GitHub Copilot (now with an agent mode), Claude Code, or Codex. Google is the exception: its Gemini Code Assist *extension* and Gemini CLI stop serving individuals [on June 18, 2026](https://developers.google.com/gemini-code-assist/resources/release-notes), and the successor, [Antigravity](https://antigravity.google/), is not another extension but a separate agentic IDE (a Cursor-style VS Code fork; see [choosing an editor](#choosing-between-positron-rstudio-and-vs-code)) — so the bolt-on path for Gemini in VS Code is effectively ending.
+
+> [!TIP]
+> If a fresh R terminal in VS Code reports **"R: (not attached)"** and you see `could not find function '.vsc.attach'`, the extension's session watcher failed to initialize (reported with recent R, such as 4.6.0). A workaround that circulates among users is to source the extension's init script from your `.Rprofile` — open it with `usethis::edit_r_profile()`, which finds the right file on Windows, macOS, and Linux alike, then add:
+>
+> ```r
+> if (interactive() && Sys.getenv("RSTUDIO") == "") {
+>   init_path <- file.path(
+>     Sys.getenv(if (.Platform$OS.type == "windows") "USERPROFILE" else "HOME"),
+>     ".vscode-R", "init.R"
+>   )
+>   source(init_path)
+>   .First.sys()  # workaround for the missing .vsc.attach()
+> }
+> ```
+>
+> See the [vscode-R issue thread](https://github.com/REditorSupport/vscode-R/issues/1696#issuecomment-4343488948) for context and discussion.
+
+### Choosing between Positron, RStudio, and VS Code
+
+Positron and RStudio are both from Posit and install side by side; Posit maintains both and has set no deprecation timeline for RStudio. Positron is under much heavier active development and wins on polyglot R/Python work, multiple R versions and concurrent sessions, the Data Explorer, the VS Code extension marketplace, remote sessions, and running the interpreter separately from the IDE (so a crash in R need not take the IDE down); it also opens Jupyter notebooks natively with full R and Python kernels, which RStudio does not do at all. RStudio still leads on Shiny and package development. Posit's own [feature comparison](https://positron.posit.co/migrate-rstudio-compare.html) weighs the two in detail.
+
+Plain VS Code sits apart from both: it is the most flexible host for AI extensions but the least specialized for R out of the box, since the data-science panes are something you [assemble yourself](#general-purpose-editors-you-assemble-vs-code). It makes the most sense when R is one language among several in an editor you already live in, or when habit or institutional policy fixes your editor and you would rather extend it than adopt a dedicated IDE. For an R-first user, though, Positron is itself a pre-assembled VS Code fork, so it delivers most of what you would otherwise build by hand with less friction — which is why it, and not plain VS Code, is the default recommendation here. A common pattern among experienced users is to keep more than one installed and open whichever fits the task.
+
+> [!NOTE]
+> **The agentic VS Code forks.** Cursor, Windsurf, and Google's [Antigravity](https://antigravity.google/) (the successor to Gemini Code Assist) are VS Code forks tuned for agent-first general development rather than R. They can usually install the R extension from the OpenVSX registry these forks use, but that support is less proven, which makes them the least R-specialized editors covered here. Antigravity's free tier is appealing for students but has tightened since launch, so check current limits before relying on it.
+
+> [!IMPORTANT]
+> Integrating agentic AI into an editor is not the same as giving that AI your R session. In Positron, RStudio, and VS Code alike — and in the agentic forks above — the built-in assistants and agent modes work primarily from your files and editor context; by default they do not see the data frames and fitted objects in your *running* session, and instead infer structure from your code and guess the rest. To let any of these tools read your real session state (and the documentation of the packages you actually have installed), wire up the [native bridge in section 4](#4-native-r-tooling-ellmer-btw-and-mcptools) as well. The IDE and the bridge are complementary, not alternatives.
 
 ## 3. Agentic CLI: Claude Code, Codex, and Gemini
 
@@ -87,17 +134,17 @@ An agentic command-line tool reads and edits files across your project, runs com
 
 - **[Claude Code](https://www.anthropic.com/claude-code)** (Anthropic). The strongest at multi-file reasoning and code quality, with skills and multi-agent orchestration. Installs via `npm`. Premium, through a Claude subscription or the API. Sessions can be handed off to and continued from the Claude desktop and mobile apps.
 - **[Codex CLI](https://developers.openai.com/codex/cli/)** (OpenAI). Open-source (Apache 2.0), rebuilt in Rust for speed, notably token-efficient, with strong kernel-level sandboxing. Bundled with ChatGPT plans, and paired with a macOS desktop app and an IDE extension, so you can start in the terminal and continue in the app.
-- **[Gemini CLI](https://github.com/google-gemini/gemini-cli)** (Google). Open-source, with the largest context window (around 1M tokens) and the most generous free tier, plus a read-only "Plan Mode" that proposes a strategy before touching files. The natural pick for very large codebases or budget-conscious work.
+- **[Gemini CLI](https://github.com/google-gemini/gemini-cli)** (Google). Open-source, with the largest context window (around 1M tokens) and historically a generous free tier, plus a read-only "Plan Mode" that proposes a strategy before touching files. Long the natural pick for very large codebases or budget-conscious work — but note that Google is folding Gemini CLI for individuals into its new [Antigravity](https://antigravity.google/) CLI [as of June 18, 2026](https://developers.google.com/gemini-code-assist/resources/release-notes), and Antigravity's free terms have already been tightened since launch, so verify current limits before relying on them.
 
 Most people end up using more than one for different tasks. The differences in raw code quality matter less than fit with your existing accounts, your budget, and how much autonomy you are comfortable granting.
 
 **Running them inside an IDE terminal.** You do not have to choose between a CLI agent and an IDE. Run the agent in your IDE's integrated terminal and you get both: the agent's full feature set plus the editor's R session, plots pane, Data Explorer, and debugger right beside it. Positron is a particularly good host because it runs these tools in *terminal mode* rather than as a constrained editor extension, so you lose none of the CLI's capabilities.
 
-**The statefulness catch.** A CLI agent runs as a separate process *alongside* R, not inside it. Left to its own devices it edits scripts and runs them with `Rscript`, which spins up a fresh session each time, so it does not automatically see the objects in your interactive session, any more than the in-IDE assistants in [section 2](#2-in-ide-assistants) do. That is fine for a lot of file-level work, but it is the single biggest reason generated R code misreads your data or a fitted object. The fix is to give the agent a way to query your live session, which is what the next section provides.
+**The statefulness catch.** A CLI agent runs as a separate process *alongside* R, not inside it. Left to its own devices it edits scripts and runs them with `Rscript`, which spins up a fresh session each time, so it does not automatically see the objects in your interactive session, any more than the in-IDE assistants in [section 2](#2-assistants-built-into-editors-and-integrated-development-environments-ides) do. Hosting the agent inside an IDE does not change this: the R extension's session viewers, plots pane, and Data Explorer serve *you*, not the agent, so the editor's live session stays invisible to a CLI tool running in its terminal. That is fine for a lot of file-level work, but it is the single biggest reason generated R code misreads your data or a fitted object. The fix is to give the agent a way to query your live session, which is what the next section provides.
 
 ## 4. Native R tooling: ellmer, btw, and mcptools
 
-This is the Posit and tidyverse stack for wiring R and LLMs together directly. It runs in two directions, with one package acting as the connective tissue between them:
+This is Posit's stack for wiring R and LLMs together directly. It runs in two directions, with one package acting as the connective tissue between them:
 
 - **R as the client:** call an LLM from inside your R code ([`ellmer`](https://ellmer.tidyverse.org/)).
 - **R as the server:** expose your R session and tools to an outside agent like Claude Code ([`mcptools`](https://posit-dev.github.io/mcptools/), via [`btw`](https://posit-dev.github.io/btw/)).
@@ -133,7 +180,7 @@ Watch your token usage with `token_usage()`; cost grows with conversation length
 
 ### R as the server: mcptools and btw
 
-Here R is the thing being called. The [Model Context Protocol](https://modelcontextprotocol.io/) (MCP) lets a coding agent call tools you expose, and the payoff for R specifically is twofold: the agent can **query the live state of your R session** (the data frames and fitted objects in your global environment) and **read the documentation of the packages you actually have installed**. That directly addresses the statefulness limitation from [section 3](#3-agentic-cli-claude-code-codex-and-gemini), and to a lesser extent the file-only context of the in-IDE assistants in [section 2](#2-in-ide-assistants); instead of guessing function arguments or re-deriving your data, the agent inspects the real thing.
+Here R is the thing being called. The [Model Context Protocol](https://modelcontextprotocol.io/) (MCP) lets a coding agent call tools you expose, and the payoff for R specifically is twofold: the agent can **query the live state of your R session** (the data frames and fitted objects in your global environment) and **read the documentation of the packages you actually have installed**. That directly addresses the statefulness limitation from [section 3](#3-agentic-cli-claude-code-codex-and-gemini), and to a lesser extent the file-only context of the in-IDE assistants in [section 2](#2-assistants-built-into-editors-and-integrated-development-environments-ides); instead of guessing function arguments or re-deriving your data, the agent inspects the real thing.
 
 [`mcptools`](https://posit-dev.github.io/mcptools/) is the protocol layer. In practice you start from [`btw`](https://posit-dev.github.io/btw/), which ships a ready-made server exposing those documentation and session tools. Register it with Claude Code from a terminal:
 
@@ -182,6 +229,20 @@ Drop to `mcptools` directly when you want to expose *arbitrary custom R function
 > [!CAUTION]
 > `btw`'s optional run-R tool executes model-written code in your global environment with no sandbox and, as of current `shinychat` and `ellmer`, no review-before-execution step. It is off by default for good reason. Enable it only in a throwaway or sandboxed session, never in a publicly reachable app.
 
+### Force multiplier for any editor: the bridge across the setups above
+
+The native tooling is not a fourth approach you adopt *instead* of the others — it is what upgrades whichever approach from sections 1–3 you already use. The failure named at the top of this guide, where the model guesses at column types or invents a function signature, is exactly what the bridge removes: it hands the model your real session state and the documentation of the packages you actually have installed. How much that helps scales with how tightly it is wired in.
+
+| Your setup (exemplar)                                       | What the `btw`/`mcptools` bridge adds                                                                                           |
+| ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| Stand-alone chat ([claude.ai](https://claude.ai/), ChatGPT) | `btw()` snapshots your objects and docs to the clipboard — a manual paste with no live link, but far better than hand-copying   |
+| In-IDE assistant (Positron Assistant; VS Code + Copilot)    | register `btw_mcp_server()` and the chat can pull live objects and installed-package docs on demand, not just your open files   |
+| Agentic CLI (Claude Code in a Positron or VS Code terminal) | the MCP server **plus** the `btw_mcp_session()` hook lets the agent inspect your *running* session mid-task, then edit to match |
+
+**A worked example.** Say Claude Code is running in Positron's terminal and you ask it to fix a `dplyr` pipeline that errors on a grouping column. Without the bridge, the agent sees only the script: it guesses the column is `group` (it is actually `treatment_grp`), edits the file, runs it with `Rscript`, reads the error, and guesses again — a slow round-trip that fails outright if the data lives only in your interactive session and never as a file the agent can source. With `btw_mcp_session()` active, it instead calls the session tool, reads the data frame's real column names and types, confirms the grouping variable, and makes the correct edit on the first pass. The same holds for a non-converging model: it can read the fitted object's structure and the actual `lmer` call rather than inferring slot names.
+
+The wiring is just the two pieces shown earlier in this section — register `btw_mcp_server()` with Claude Code, and add `btw_mcp_session()` to your `.Rprofile` so the agent reaches the session you are actually working in. That is what turns the [statefulness catch](#3-agentic-cli-claude-code-codex-and-gemini) into a non-issue, and why the [recommended stack](#a-recommended-default-stack) pairs Claude Code with the `btw` MCP server rather than running it blind.
+
 ## Cross-cutting cautions
 
 - **Verify generated statistics code.** Plausible-looking R is not correct R. Model-selection logic, contrast coding, random-effects structure, and the meaning of a fitted object's slots all reward a careful read. Treat agent output as a fast first draft to react to, not an answer.
@@ -212,12 +273,16 @@ This is less an integration approach than the infrastructure that makes the othe
 - ragnar: <https://ragnar.tidyverse.org/>
 - Positron: <https://positron.posit.co/>
 - Positron vs RStudio feature comparison: <https://positron.posit.co/migrate-rstudio-compare.html>
+- R extension for VS Code: <https://marketplace.visualstudio.com/items?itemName=REditorSupport.r>
+- httpgd plot viewer in VS Code: <https://nx10.dev/httpgd/articles/b01_vscode.html>
+- R Plot Pro extension: <https://marketplace.visualstudio.com/items?itemName=ofurkancoban.r-plot-pro>
 - RStudio GitHub Copilot guide: <https://docs.posit.co/ide/user/ide/guide/tools/copilot.html>
 - Posit Cloud: <https://posit.cloud/>
 - Google Colab: <https://colab.research.google.com/>
 - Claude Code: <https://www.anthropic.com/claude-code>
 - Codex CLI: <https://developers.openai.com/codex/cli/>
 - Gemini CLI: <https://github.com/google-gemini/gemini-cli>
+- Google Antigravity (successor to Gemini Code Assist / Gemini CLI for individuals): <https://antigravity.google/>
 - ChatGPT "Work with Apps" on macOS: <https://help.openai.com/en/articles/10119604-work-with-apps-on-macos>
 - rocker (Docker images for R): <https://rocker-project.org/>
 - WebR: <https://docs.r-wasm.org/webr/latest/>
