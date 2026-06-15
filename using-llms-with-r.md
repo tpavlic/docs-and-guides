@@ -8,11 +8,11 @@ A short field guide to the main ways you can put a large language model to work 
 > This space moves fast. Versions, product names, and defaults change often. Treat everything below as a starting point and check the linked docs. Last reviewed June 2026.
 
 > [!TIP]
-> **TL;DR.** If you just want a recommendation: install [Positron](https://positron.posit.co/) and run [Claude Code](https://www.anthropic.com/claude-code) in its integrated terminal, then register the [`btw`](https://posit-dev.github.io/btw/) MCP server so the agent can read your installed-package documentation and the live objects in your R session. Add [`renv`](https://rstudio.github.io/renv/) for reproducibility. Everything below is context for when that default does not fit; the [quick start](#1-quick-start-llm-integrated-into-full-featured-r-editor) has the exact steps.
+> **TL;DR.** If you just want a recommendation: install [Positron](https://positron.posit.co/) and its [Claude Code](https://www.anthropic.com/claude-code) extension (or run `claude` in its integrated terminal), then register the [`btw`](https://posit-dev.github.io/btw/) MCP server so the agent can read your installed-package documentation and the live objects in your R session. The [quick start](#1-quick-start-llm-integrated-into-full-featured-r-development-environment) has the exact steps. All other sections provide background context and alternative use cases and configurations.
 
 ---
 
-- [1. Quick start: LLM integrated into full-featured R editor](#1-quick-start-llm-integrated-into-full-featured-r-editor)
+- [1. Quick start: LLM integrated into full-featured R development environment](#1-quick-start-llm-integrated-into-full-featured-r-development-environment)
 - [2. No-integration Case: Keep LLM coding assistant separate from R sessions](#2-no-integration-case-keep-llm-coding-assistant-separate-from-r-sessions)
   - [Copy and paste (stand-alone chat)](#copy-and-paste-stand-alone-chat)
   - [Agents that drive your browser or desktop](#agents-that-drive-your-browser-or-desktop)
@@ -34,7 +34,7 @@ A short field guide to the main ways you can put a large language model to work 
 
 ---
 
-## 1. Quick start: LLM integrated into full-featured R editor
+## 1. Quick start: LLM integrated into full-featured R development environment
 
 This is the recommended default for most people. **Steps 1–3 are all you need to get the LLM link working**; step 4 is best-practice and special-case additions. Read on past this for the reasoning behind each choice and the alternatives for when this default does not fit.
 
@@ -277,7 +277,7 @@ The native tooling is not a fourth approach you adopt *instead* of the others �
 
 **A worked example.** Say Claude Code is running in Positron's terminal and you ask it to fix a `dplyr` pipeline that errors on a grouping column. Without the bridge, the agent sees only the script: it guesses the column is `group` (it is actually `treatment_grp`), edits the file, runs it with `Rscript`, reads the error, and guesses again — a slow round-trip that fails outright if the data lives only in your interactive session and never as a file the agent can source. With `btw_mcp_session()` active, it instead calls the session tool, reads the data frame's real column names and types, confirms the grouping variable, and makes the correct edit on the first pass. The same holds for a non-converging model: it can read the fitted object's structure and the actual `lmer` call rather than inferring slot names.
 
-The wiring is just the two pieces shown earlier in this section — register `btw_mcp_server()` with Claude Code, and add `btw_mcp_session()` to your `.Rprofile` so the agent reaches the session you are actually working in. That is what turns the statefulness catch in [section 3](#3-coding-assistant-as-script-editor-edit-r-scripts-directly-without-session-information) and [section 4](#4-integrated-development-environments-ides-that-simplify-use-of-coding-assistants-alongside-r) into a non-issue, and this is why the [quick start](#1-quick-start-llm-integrated-into-full-featured-r-editor) pairs Claude Code with the `btw` MCP server rather than running it blind.
+The wiring is just the two pieces shown earlier in this section — register `btw_mcp_server()` with Claude Code, and add `btw_mcp_session()` to your `.Rprofile` so the agent reaches the session you are actually working in. That is what turns the statefulness catch in [section 3](#3-coding-assistant-as-script-editor-edit-r-scripts-directly-without-session-information) and [section 4](#4-integrated-development-environments-ides-that-simplify-use-of-coding-assistants-alongside-r) into a non-issue, and this is why the [quick start](#1-quick-start-llm-integrated-into-full-featured-r-development-environment) pairs Claude Code with the `btw` MCP server rather than running it blind.
 
 ## Cross-cutting cautions
 
