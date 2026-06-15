@@ -140,16 +140,20 @@ These tools split into two families. **Purpose-built R IDEs** ship the assistant
 3. **AI layer.** This is the payoff that motivated the move to VS Code in the first place: layer on whichever assistant you want, each as an extension — GitHub Copilot (now with an agent mode), Claude Code, or Codex. Google is the exception: its Gemini Code Assist *extension* and Gemini CLI stop serving individuals [on June 18, 2026](https://developers.google.com/gemini-code-assist/resources/release-notes), and the successor, [Antigravity](https://antigravity.google/), is not another extension but a separate agentic IDE (a Cursor-style VS Code fork; see [choosing an editor](#choosing-between-positron-rstudio-and-vs-code)) — so the bolt-on path for Gemini in VS Code is effectively ending.
 
 > [!TIP]
-> The quickest way to start an R session is to click the **R: (not attached)** indicator in VS Code's bottom status bar; it should launch R and switch to **R: (attached)**. If it instead stays **not attached** and you see `could not find function '.vsc.attach'`, the session watcher failed to initialize (reported with recent R, such as 4.6.0). A workaround that circulates among users is to source the extension's init script from your `.Rprofile` — open it with `usethis::edit_r_profile()`, which finds the right file on Windows, macOS, and Linux alike, then add:
+> The quickest way to start an R session is to click the **R: (not attached)** indicator in VS Code's bottom status bar; it should launch R in a new terminal and switch to **R [VERSION]** in the status bar.
+>
+> If the status bar remains **not attached** and you see `could not find function '.vsc.attach'` in the R session started in the terminal, you may be seeing the symptoms of a [known issue](https://github.com/REditorSupport/vscode-R/issues/1696) stemming from a change in R 4.6.0. To fix this issue, you can edit your `.Rprofile` file to ensure that `.vsc.attach` is properly defined when R loads. To do so, open your `.Rprofile` with `usethis::edit_r_profile()` (which finds the right file on Windows, macOS, and Linux) and then add this block **at the very end of the file:**
 >
 > ```r
-> if (interactive() && Sys.getenv("RSTUDIO") == "") {
+> # Place at very end of .Rprofile to mimic the startup behavior of R versions before 4.6.0
+> if (interactive() && Sys.getenv("RSTUDIO") == "" && Sys.getenv("TERM_PROGRAM") == "vscode") {
+>   # find vscode-R's init.R
 >   init_path <- file.path(
 >     Sys.getenv(if (.Platform$OS.type == "windows") "USERPROFILE" else "HOME"),
 >     ".vscode-R", "init.R"
 >   )
->   source(init_path)
->   .First.sys()  # workaround for the missing .vsc.attach()
+>   source(init_path)   # run vscode-R's init.R, which places .vsc.* definitions in .First.sys
+>   .First.sys()        # ensures .vsc.*() exist (R 4.6.0 no longer auto-fires .First.sys)
 > }
 > ```
 >
