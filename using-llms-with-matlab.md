@@ -245,6 +245,8 @@ Connecting to [a local Ollama model](https://docs.ollama.com/quickstart) keeps d
 
 You can also point MATLAB the other way, as an MCP *client*. The **[MATLAB MCP HTTP Client](https://github.com/matlab-deep-learning/mcpHTTPClient)** (R2025a+, paired with LLMs with MATLAB 4.6.0+) lets MATLAB call external MCP tools with a single `callTool`, so a model running inside MATLAB can decide for itself when to reach out to another MCP server – the basis for building your own agents (ReAct loops, tool chaining, human-in-the-loop) in plain MATLAB code. It is the mirror image of [MATLAB as the server](#matlab-as-the-server-the-matlab-mcp-core-server): there an outside agent drives MATLAB, whereas here MATLAB is the agent.
 
+If you would rather not hand-roll that loop, the newer **[MATLAB AI Agent SDK](https://github.com/matlab/matlab-ai-agent-sdk)** is the batteries-included framework for the same job: `aisdk.AIAgent` ties together an LLM client (OpenAI, Ollama, or any OpenAI-compatible endpoint), your own functions exposed as tools with `aisdk.LLMTool`, and external MCP servers through `MCPTool`, handling message history, parallel tool calls, and subagents for you. Because a tool can operate on data already in your workspace, large arrays stay local rather than being shipped to the model. It is a **research preview** under active development, so treat the API as a moving target – but it is the most direct path today to a MATLAB-native agent.
+
 ### Force multiplier for any editor: the bridge across the setups above
 
 The MCP server is not a fourth approach you adopt *instead* of the others – it is what upgrades whichever approach from sections 1–4 you already use. The failure named at the top of this guide, where the model guesses at an array's shape, invents a function signature, or assumes a toolbox you do not own, is exactly what the bridge removes: it lets the model run code in your real session and read the toolboxes you actually have. How much that helps scales with how tightly it is wired in.
@@ -298,6 +300,7 @@ This is less an integration approach than the infrastructure that makes the othe
 - Simulink Agentic Toolkit: <https://github.com/matlab/simulink-agentic-toolkit>
 - Guide to Agentic AI with MATLAB and Simulink (MathWorks): <https://www.mathworks.com/campaigns/offers/next/agentic-ai-with-matlab.html>
 - MATLAB MCP HTTP Client (MATLAB as an MCP client): <https://github.com/matlab-deep-learning/mcpHTTPClient>
+- MATLAB AI Agent SDK (build agents in MATLAB; research preview): <https://github.com/matlab/matlab-ai-agent-sdk>
 - MATLAB extension for Visual Studio Code: <https://github.com/mathworks/MATLAB-extension-for-vscode>
 - Using MATLAB in Visual Studio Code: <https://www.mathworks.com/products/matlab-with-vs-code.html>
 - MATLAB Copilot / Generative AI with MATLAB: <https://www.mathworks.com/products/matlab/generative-ai.html>
