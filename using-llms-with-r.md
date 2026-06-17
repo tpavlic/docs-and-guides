@@ -190,7 +190,7 @@ In modern agentic AI, different agents and resources can access each other throu
 - **R as the server:** expose your R session and tools to an outside agent like Claude Code ([`mcptools`](https://posit-dev.github.io/mcptools/), via [`btw`](https://posit-dev.github.io/btw/)).
 - **The connective layer:** [`btw`](https://posit-dev.github.io/btw/) gathers R context and feeds it to either direction.
 
-Some of these tools also allow for connecting R to so-called open-weight models that run locally, which can reduce the cost of LLM use (no subscriptions) and increase data privacy and security. The use of open-weight models is outside the scope of this tutorial, but the R help on `ellmer` is a good place to start if you wish to investigate how to use open-weight models with R.
+Some of these tools also allow for connecting R to so-called open-weight models that run locally, which can reduce the cost of LLM use (no subscriptions) and increase data privacy and security (see [Ollama](https://ollama.com/) for more details). The use of open-weight models is outside the scope of this tutorial, but the R help on `ellmer` is a good place to start if you wish to investigate how to use open-weight models with R.
 
 ### R as the client: ellmer
 
