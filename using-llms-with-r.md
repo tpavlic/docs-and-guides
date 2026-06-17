@@ -342,6 +342,7 @@ This is less an integration approach than the infrastructure that makes the othe
 - ChatGPT "Work with Apps" on macOS: <https://help.openai.com/en/articles/10119604-work-with-apps-on-macos>
 - rocker (Docker images for R): <https://rocker-project.org/>
 - WebR: <https://docs.r-wasm.org/webr/latest/>
+- Companion guide: [Using LLMs with MATLAB](using-llms-with-matlab.md)
 
 ---
 

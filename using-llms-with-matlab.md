@@ -300,6 +300,7 @@ This is less an integration approach than the infrastructure that makes the othe
 - Claude Code: <https://www.anthropic.com/claude-code>
 - Codex CLI: <https://developers.openai.com/codex/cli/>
 - Gemini CLI: <https://github.com/google-gemini/gemini-cli>
+- Companion guide: [Using LLMs with R](using-llms-with-r.md)
 
 ---
 
