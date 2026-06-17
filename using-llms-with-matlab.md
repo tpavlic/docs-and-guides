@@ -160,6 +160,9 @@ It also serves two **resources** – `guidelines://coding` (MATLAB coding standa
 
 The twin payoffs are the ones named throughout this guide: the agent can **run code in and inspect the real state of your MATLAB session** instead of guessing, and it can **see which toolboxes you actually have** rather than hallucinating one. That directly addresses the statefulness catch from [sections 3](#3-coding-assistant-as-script-editor-edit-m-files-without-session-information) and [4](#4-editors-and-ides-that-simplify-use-of-coding-assistants-alongside-matlab).
 
+> [!NOTE]
+> **Simulink, too.** The [Simulink Agentic Toolkit](https://github.com/matlab/simulink-agentic-toolkit) builds on this same MCP Core Server and extends it into Model-Based Design. On top of the MATLAB tools above, it adds Simulink-specific ones for reading model structure, editing blocks and connections, querying parameters, and running simulations, plus skills spanning Simulink, Stateflow, Simscape, System Composer, and requirements traceability. If your work is models rather than scripts, install it alongside (or instead of) the plain MATLAB toolkit; the registration and live-session story are the same as above.
+
 ### Installing and registering the server (the bare minimum)
 
 The [project README](https://github.com/matlab/matlab-mcp-core-server) is the authoritative install guide; this is the short version for someone who already understands MCP servers and just needs the key points.
@@ -180,7 +183,7 @@ The [project README](https://github.com/matlab/matlab-mcp-core-server) is the au
    claude mcp add --transport stdio matlab -- /full/path/to/matlab-mcp-core-server
    ```
 
-   Codex, GitHub Copilot (a `.vscode/mcp.json` entry), Amp, and Gemini CLI follow each tool's usual MCP-registration pattern. The easiest route for any of them is to let the **[MATLAB Agentic Toolkit](https://github.com/matlab/matlab-agentic-toolkit)** install and register the server for you – it targets exactly this set of assistants.
+   Codex, GitHub Copilot (a `.vscode/mcp.json` entry), Amp, and Gemini CLI follow each tool's usual MCP-registration pattern. The easiest route for any of them is the **[MATLAB Agentic Toolkit](https://github.com/matlab/matlab-agentic-toolkit)**: clone its repo, open your agent in that folder, and ask it to "set up the toolkit," after which a setup skill detects MATLAB, installs the server, and registers it (it targets exactly this set of assistants). The toolkit is more than an installer, though – alongside the server it bundles a curated set of **agent skills**, Markdown instruction files that teach the agent MATLAB engineering practices and recommended workflows, either invoked explicitly (a slash command in Claude Code) or pulled in automatically when a task calls for one.
 
 Useful flags include `--matlab-root` (point at a specific MATLAB install), `--matlab-display-mode` (`desktop` vs `nodesktop`), `--initial-working-folder`, and `--matlab-session-mode` (covered next). Run with `--disable-telemetry=true` to opt out of anonymized data collection.
 
@@ -240,6 +243,8 @@ chat = openAIChat("You are a terse assistant. American English.", ...
 
 Connecting to a local Ollama model keeps data on your machine and avoids per-token cost, which matters for sensitive data or classroom use. The repository's [documentation](https://github.com/matlab-deep-learning/llms-with-matlab) is a good starting point, including its [Ollama guide](https://github.com/matlab-deep-learning/llms-with-matlab/blob/main/doc/Ollama.md).
 
+You can also point MATLAB the other way, as an MCP *client*. The **[MATLAB MCP HTTP Client](https://github.com/matlab-deep-learning/mcpHTTPClient)** (R2025a+, paired with LLMs with MATLAB 4.6.0+) lets MATLAB call external MCP tools with a single `callTool`, so a model running inside MATLAB can decide for itself when to reach out to another MCP server – the basis for building your own agents (ReAct loops, tool chaining, human-in-the-loop) in plain MATLAB code. It is the mirror image of [MATLAB as the server](#matlab-as-the-server-the-matlab-mcp-core-server): there an outside agent drives MATLAB, whereas here MATLAB is the agent.
+
 ### Force multiplier for any editor: the bridge across the setups above
 
 The MCP server is not a fourth approach you adopt *instead* of the others – it is what upgrades whichever approach from sections 1–4 you already use. The failure named at the top of this guide, where the model guesses at an array's shape, invents a function signature, or assumes a toolbox you do not own, is exactly what the bridge removes: it lets the model run code in your real session and read the toolboxes you actually have. How much that helps scales with how tightly it is wired in.
@@ -291,6 +296,8 @@ This is less an integration approach than the infrastructure that makes the othe
 - MATLAB MCP Core Server Update: Bringing Your Coding Guidelines Directly to AI (MathWorks blog): <https://blogs.mathworks.com/deep-learning/2025/12/11/matlab-mcp-server-update-bringing-your-coding-guidelines-directly-to-ai/>
 - MATLAB Agentic Toolkit: <https://github.com/matlab/matlab-agentic-toolkit>
 - Simulink Agentic Toolkit: <https://github.com/matlab/simulink-agentic-toolkit>
+- Guide to Agentic AI with MATLAB and Simulink (MathWorks): <https://www.mathworks.com/campaigns/offers/next/agentic-ai-with-matlab.html>
+- MATLAB MCP HTTP Client (MATLAB as an MCP client): <https://github.com/matlab-deep-learning/mcpHTTPClient>
 - MATLAB extension for Visual Studio Code: <https://github.com/mathworks/MATLAB-extension-for-vscode>
 - Using MATLAB in Visual Studio Code: <https://www.mathworks.com/products/matlab-with-vs-code.html>
 - MATLAB Copilot / Generative AI with MATLAB: <https://www.mathworks.com/products/matlab/generative-ai.html>
