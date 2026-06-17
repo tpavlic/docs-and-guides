@@ -9,6 +9,7 @@ A personal collection of technical notes, documents, and guides I share with stu
 | Guide | Topics | Summary |
 | --- | --- | --- |
 | [Using LLMs with R](using-llms-with-r.md) | LLMs, R, tooling | A map of the ways to use large language models alongside R, from copy-and-paste chat to agentic CLIs and native R packages. |
+| [Using LLMs with MATLAB](using-llms-with-matlab.md) | LLMs, MATLAB, tooling | A map of the ways to use large language models alongside MATLAB, from copy-and-paste chat to agentic CLIs and the MATLAB MCP Core Server. |
 
 ## How this repo is organized
 
