@@ -26,7 +26,7 @@ A short field guide to the main ways you can put a large language model to work 
   - [MATLAB as the server: the MATLAB MCP Core Server](#matlab-as-the-server-the-matlab-mcp-core-server)
   - [Installing and registering the server (the bare minimum)](#installing-and-registering-the-server-the-bare-minimum)
   - [Connecting to your running session: session modes](#connecting-to-your-running-session-session-modes)
-  - [MATLAB as the client: the LLMs with MATLAB add-on](#matlab-as-the-client-the-llms-with-matlab-add-on)
+  - [MATLAB as the client: calling LLMs and building agents in MATLAB](#matlab-as-the-client-calling-llms-and-building-agents-in-matlab)
   - [Force multiplier for any editor: the bridge across the setups above](#force-multiplier-for-any-editor-the-bridge-across-the-setups-above)
 - [Cross-cutting cautions](#cross-cutting-cautions)
 - [Reproducibility and sandboxing](#reproducibility-and-sandboxing)
@@ -67,7 +67,7 @@ This is the recommended default for most people. **Steps 1–3 are all you need 
    That call can also run automatically each time MATLAB launches, by placing it in your `startup.m` – see [Connecting to your running session](#connecting-to-your-running-session-session-modes) for the setup details. If you use a different assistant, the MCP registration is slightly different; ask it to "register the MATLAB MCP Core Server" and it will usually do it or tell you exactly how.
 
 4. **Recommended and special-case additions** (none are required for the LLM link itself):
-   - **[Large Language Models (LLMs) with MATLAB](https://github.com/matlab-deep-learning/llms-with-matlab)** when the model belongs *inside* your MATLAB code (classify text, extract structured fields, call a model over many rows) rather than acting as an external assistant. See [section 5](#matlab-as-the-client-the-llms-with-matlab-add-on).
+   - **[Large Language Models (LLMs) with MATLAB](https://github.com/matlab-deep-learning/llms-with-matlab)** when the model belongs *inside* your MATLAB code (classify text, extract structured fields, call a model over many rows) rather than acting as an external assistant. See [section 5](#matlab-as-the-client-calling-llms-and-building-agents-in-matlab).
    - **[MATLAB Copilot](https://www.mathworks.com/products/matlab/generative-ai.html)** (R2025b+) for in-editor completions and a docs-grounded chat without leaving the desktop. See [section 4](#the-matlab-desktop-and-matlab-copilot).
    - **[Simulink Agentic Toolkit](https://github.com/matlab/simulink-agentic-toolkit)** / Simulink MCP server when your work is model-based and you want the agent to read and edit Simulink models too.
 
@@ -231,7 +231,7 @@ With a session shared this way, `auto` (or `existing`) attaches to *that* worksp
 > [!NOTE]
 > The agent reads **text** output and any files you save; it does not see figures rendered in the MATLAB UI. To let it "see" a plot, save the figure to an image file it can read (PNG or JPEG) – then it can open and reason about it. This is a small but frequent gotcha when you ask an agent to "check the plot."
 
-### MATLAB as the client: the LLMs with MATLAB add-on
+### MATLAB as the client: calling LLMs and building agents in MATLAB
 
 Use this when you do not want an assistant so much as to *program with* a model from inside MATLAB: classify free text, extract structured fields, build a domain chatbot, or run a model over many rows. The free **[Large Language Models (LLMs) with MATLAB](https://github.com/matlab-deep-learning/llms-with-matlab)** add-on (install from the Add-On Explorer, or clone the repo; requires R2024a+) is the core piece. It connects to OpenAI Chat Completions, Azure OpenAI, and [**Ollama**](https://ollama.com/) for locally hosted open-weight models, and supports streaming, chat-history management, structured/JSON output, tool calling, and image generation.
 
@@ -243,9 +243,11 @@ chat = openAIChat("You are a terse assistant. American English.", ...
 
 Connecting to [a local Ollama model](https://docs.ollama.com/quickstart) keeps data on your machine and avoids per-token cost, which matters for sensitive data or classroom use. The repository's [documentation](https://github.com/matlab-deep-learning/llms-with-matlab) is a good starting point, including its [Ollama guide](https://github.com/matlab-deep-learning/llms-with-matlab/blob/main/doc/Ollama.md).
 
-You can also point MATLAB the other way, as an MCP *client*. The **[MATLAB MCP HTTP Client](https://github.com/matlab-deep-learning/mcpHTTPClient)** (R2025a+, paired with LLMs with MATLAB 4.6.0+) lets MATLAB call external MCP tools with a single `callTool`, so a model running inside MATLAB can decide for itself when to reach out to another MCP server – the basis for building your own agents (ReAct loops, tool chaining, human-in-the-loop) in plain MATLAB code. It is the mirror image of [MATLAB as the server](#matlab-as-the-server-the-matlab-mcp-core-server): there an outside agent drives MATLAB, whereas here MATLAB is the agent.
+#### Building MCP clients and agents in MATLAB
 
-If you would rather not hand-roll that loop, the newer **[MATLAB AI Agent SDK](https://github.com/matlab/matlab-ai-agent-sdk)** is the batteries-included framework for the same job: `aisdk.AIAgent` ties together an LLM client (OpenAI, Ollama, or any OpenAI-compatible endpoint), your own functions exposed as tools with `aisdk.LLMTool`, and external MCP servers through `MCPTool`, handling message history, parallel tool calls, and subagents for you. Because a tool can operate on data already in your workspace, large arrays stay local rather than being shipped to the model. It is a **research preview** under active development, so treat the API as a moving target – but it is the most direct path today to a MATLAB-native agent.
+You can also have MATLAB act as an MCP *client*, connecting to MCP servers that are typically used for interfacing with AI agents. The **[MATLAB MCP HTTP Client](https://github.com/matlab-deep-learning/mcpHTTPClient)** (R2025a+, paired with LLMs with MATLAB 4.6.0+) lets MATLAB call external MCP tools with a single `callTool`, and so a model running inside MATLAB can decide for itself when to reach out to another MCP server – the basis for building your own agents (ReAct loops, tool chaining, human-in-the-loop) in plain MATLAB code. It is the mirror image of [MATLAB as the server](#matlab-as-the-server-the-matlab-mcp-core-server): there an outside agent drives MATLAB, whereas here MATLAB is the agent.
+
+Furthermore, the newer **[MATLAB AI Agent SDK](https://github.com/matlab/matlab-ai-agent-sdk)** provides a more streamlined approach to **developing MATLAB-based AI agents:** `aisdk.AIAgent` ties together an LLM client (OpenAI, Ollama, or any OpenAI-compatible endpoint), your own functions exposed as tools with `aisdk.LLMTool`, and external MCP servers through `MCPTool`, handling message history, parallel tool calls, and subagents for you. Because a tool can operate on data already in your workspace, large arrays stay local rather than being shipped to the model. It is a **research preview** under active development, and so the API may not have yet stabilized, but it is the most direct path today to a MATLAB-native AI agent.
 
 ### Force multiplier for any editor: the bridge across the setups above
 
@@ -266,7 +268,7 @@ The wiring is just the pieces shown earlier in this section – register the ser
 - **Verify generated numerical code.** Plausible-looking MATLAB is not correct MATLAB. Vectorization that quietly changes broadcasting, the wrong dimension in a reduction, off-by-one indexing, and the meaning of a model object's properties all reward a careful read. Treat agent output as a fast first draft to react to, not an answer.
 - **A correct tool result can still be reported wrong.** The MCP tools run real MATLAB, but the model's *summary* of what they returned is still an LLM guess. In MathWorks' own [walkthrough](https://blogs.mathworks.com/matlab/2025/11/03/exploring-the-matlab-model-context-protocol-mcp-core-server-with-claude-desktop/), `detect_matlab_toolboxes` returned an accurate list yet the model miscounted it (102 instead of 99). When a number matters, have the agent compute it *in* MATLAB rather than counting in prose.
 - **Mind what the assistant can see, and do.** Live-session access lets the agent run arbitrary code with your privileges; UI-driving and desktop agents go further still. Decide consciously what each tool can reach – and keep its working folder scoped – before you wire it up.
-- **Cost and keys.** Agentic and in-editor workflows bill against a subscription or API key and scale with context length and turns. Prefer cheaper models for routine tasks and reserve top-tier models for hard problems; for sensitive or high-volume work, a local Ollama model through [LLMs with MATLAB](#matlab-as-the-client-the-llms-with-matlab-add-on) avoids both cost and data exposure.
+- **Cost and keys.** Agentic and in-editor workflows bill against a subscription or API key and scale with context length and turns. Prefer cheaper models for routine tasks and reserve top-tier models for hard problems; for sensitive or high-volume work, a local Ollama model through [LLMs with MATLAB](#matlab-as-the-client-calling-llms-and-building-agents-in-matlab) avoids both cost and data exposure.
 - **Licensing.** The MCP Core Server is single-user and must not be shared by multiple users; check the [repository](https://github.com/matlab/matlab-mcp-core-server) terms for any deployment beyond your own machine.
 - **Reproducibility.** If an LLM touched a result that goes into a paper, the pipeline should still run without it. Pin versions, script the calls, and keep a human-readable record of what the model did.
 
@@ -287,7 +289,7 @@ This is less an integration approach than the infrastructure that makes the othe
 | Run MATLAB without a local install                           | [MATLAB Online](#where-matlab-runs-in-the-browser-cloud-options)                                |
 | Hand off a multi-file task to an agent                       | [An agentic CLI](#3-coding-assistant-as-script-editor-edit-m-files-without-session-information) |
 | Let an agent run code in your real session and see toolboxes | [The MATLAB MCP Core Server](#matlab-as-the-server-the-matlab-mcp-core-server)                  |
-| Call an LLM *from inside* your MATLAB code                   | [LLMs with MATLAB](#matlab-as-the-client-the-llms-with-matlab-add-on)                           |
+| Call an LLM *from inside* your MATLAB code                   | [LLMs with MATLAB](#matlab-as-the-client-calling-llms-and-building-agents-in-matlab)            |
 | Pin versions or sandbox an autonomous agent                  | [Docker and version pinning](#reproducibility-and-sandboxing)                                   |
 
 ## Selected references
