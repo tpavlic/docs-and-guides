@@ -23,6 +23,7 @@ Whereas this repository holds a variety of MarkDown-formatted documents and guid
 
 - [Topic Visualizers — Interactive Explainers](https://tpavlic.github.io/topic_visualizers/) — interactive web demonstrations across science, mathematics, statistics, and engineering.
 - [Bio-Inspired AI & Optimization — Course Visualizations](https://tpavlic.github.io/asu-bioinspired-ai-and-optimization/) — supplemental interactive explorers for *IEE/CSE 598: Bio-Inspired AI and Optimization* at Arizona State University, spanning genetic algorithms, swarm intelligence, neural networks, and other bio-inspired methods.
+- [Lectures and short video tutorials](https://www.youtube.com/@TedPavlic) on YouTube, including the [Office Hours](https://www.youtube.com/playlist?list=PLXBbGVSkQJqEFKCGlTbzBnvf96DRJ6_gi) playlist.
 
 ## License
 
