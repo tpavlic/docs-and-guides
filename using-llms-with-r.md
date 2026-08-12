@@ -397,4 +397,4 @@ Watch your token usage with `token_usage()`; cost grows with conversation length
 
 ---
 
-*MIT License. Copyright © 2026 Theodore P. Pavlic. Shared as a starting point; verify against current documentation, since this tooling changes quickly.*
+*MIT License. Copyright © 2026 Theodore P. Pavlic. Shared as a starting point; verify against current documentation, because this tooling changes quickly.*
