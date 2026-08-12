@@ -1,8 +1,6 @@
 # Using LLMs with R: A Practical Map of the Approaches
 
-A short field guide to the main ways of putting a large language model to work alongside R. It opens with the three choices every setup comes down to, then takes each in turn. Written for colleagues and students who already know R and want to choose a setup deliberately rather than by accident.
-
-> **Why R needs its own guide.** Much of the real work in R lives in a *stateful, interactive session*: fitted model objects, data frames whose actual structure matters, plots you just generated. A generic "edit a file, run it, read the output" loop throws that away, which is exactly why LLMs tend to hallucinate function signatures or guess at column types when they cannot see your session. The approaches below differ mostly in how well they close that gap.
+A short field guide to using large language models (LLMs) alongside R. It covers the straightforward setups and the more involved options, including running an MCP server inside R so an assistant can read your live session and your installed-package documentation. This guide is written for those who already know R.
 
 > [!NOTE]
 > This space moves fast. Versions, product names, and defaults change often. Treat everything below as a starting point and check the linked docs. Last reviewed August 2026.

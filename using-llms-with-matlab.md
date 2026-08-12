@@ -1,8 +1,6 @@
 # Using LLMs with MATLAB: A Practical Map of the Approaches
 
-A short field guide to the main ways of putting a large language model to work alongside MATLAB. The quick start comes first; the remaining sections are ordered roughly from *least integrated with your MATLAB session* to *most*. Written for colleagues and students who already know MATLAB and want to choose a setup deliberately rather than by accident.
-
-> **Why MATLAB needs its own guide.** Much of the real work in MATLAB lives in a *stateful, interactive session*: variables in the base workspace, figures you just drew, a model object whose actual structure matters, the toolboxes you happen to have licensed. A generic "edit a file, run it, read the output" loop throws that away, which is why LLMs tend to hallucinate function signatures, invent a toolbox you do not own, or guess at the shape of your data when they cannot see your session. The approaches below differ mostly in how well they close that gap – and MATLAB now ships an official mechanism, the [MATLAB MCP Server](https://github.com/matlab/matlab-mcp-server), for closing it.
+A short field guide to using large language models (LLMs) alongside MATLAB. A quick start comes first; the rest covers the alternatives and the more involved options, including MathWorks' MCP Server, which lets an assistant run and check code in your live MATLAB session and read the toolboxes you actually have installed. This guide is written for those who already know MATLAB.
 
 > [!NOTE]
 > This space moves fast. Versions, product names, and defaults change often. Treat everything below as a starting point and check the linked docs. Last reviewed August 2026.
