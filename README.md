@@ -6,8 +6,8 @@ A personal collection of technical notes, documents, and guides I share with stu
 
 ## Index
 
-- **[Using LLMs with R](using-llms-with-r.md)** *(LLMs, R, tooling)*: A map of the ways to use large language models alongside R, from copy-and-paste chat to agentic CLIs and native R packages
-- **[Using LLMs with MATLAB](using-llms-with-matlab.md)** *(LLMs, MATLAB, tooling)*: A map of the ways to use large language models alongside MATLAB, from copy-and-paste chat to agentic CLIs and the MATLAB MCP Core Server
+- **[Using LLMs with R](using-llms-with-r.md)** *(LLMs, R, tooling)*: Choosing an editor, an assistant, and a way for that assistant to reach your live R session, from a plain chat window to an MCP server running inside R
+- **[Using LLMs with MATLAB](using-llms-with-matlab.md)** *(LLMs, MATLAB, tooling)*: A map of the ways to use large language models alongside MATLAB, from copy-and-paste chat to agentic CLIs and the MATLAB MCP Server
 
 ## How this repo is organized
 
