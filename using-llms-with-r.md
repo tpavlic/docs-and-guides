@@ -1,6 +1,6 @@
 # Using LLMs with R: A Practical Map of the Approaches
 
-A short field guide to the main ways you can put a large language model to work alongside R. It opens with the three choices every setup comes down to, then takes each in turn. Written for colleagues and students who already know R and want to choose a setup deliberately rather than by accident.
+A short field guide to the main ways of putting a large language model to work alongside R. It opens with the three choices every setup comes down to, then takes each in turn. Written for colleagues and students who already know R and want to choose a setup deliberately rather than by accident.
 
 > **Why R needs its own guide.** Much of the real work in R lives in a *stateful, interactive session*: fitted model objects, data frames whose actual structure matters, plots you just generated. A generic "edit a file, run it, read the output" loop throws that away, which is exactly why LLMs tend to hallucinate function signatures or guess at column types when they cannot see your session. The approaches below differ mostly in how well they close that gap.
 
@@ -107,7 +107,7 @@ Both come from Posit, both install side by side, and both now host the same AI a
 
    - For the closest thing to RStudio's Plots pane, the third-party [R Plot Pro extension](https://marketplace.visualstudio.com/items?itemName=ofurkancoban.r-plot-pro) lives in the bottom panel beside the terminal and wraps plots in familiar chrome: a toolbar for paging back and forth through plot history, zooming, and saving or exporting, plus a thumbnail history strip down the side. RStudio migrants tend to find it the most recognizable of the options.
 
-3. **AI layer.** Layer on whichever assistant you want, each as an extension – GitHub Copilot (built into VS Code, and now with an agent mode), [Claude Code](https://marketplace.visualstudio.com/items?itemName=anthropic.claude-code), or [Codex](https://marketplace.visualstudio.com/items?itemName=openai.chatgpt) – which you can search for under the Extensions pane in VS Code. Google is the exception: its Gemini Code Assist *extension* and Gemini CLI stop serving individuals [on June 18, 2026](https://developers.google.com/gemini-code-assist/resources/release-notes), and the successor, [Antigravity](https://antigravity.google/), is not another extension but a separate agentic IDE (a Cursor-style VS Code fork; see [choosing an editor](#choosing-between-rstudio-positron-and-vs-code)) – so the bolt-on path for Gemini in VS Code is effectively ending.
+3. **AI layer.** Layer on whichever assistant you want, each as an extension – GitHub Copilot (built into VS Code, and now with an agent mode), [Claude Code](https://marketplace.visualstudio.com/items?itemName=anthropic.claude-code), or [Codex](https://marketplace.visualstudio.com/items?itemName=openai.chatgpt) – all searchable under the Extensions pane in VS Code. Google is the exception: its Gemini Code Assist *extension* and Gemini CLI stop serving individuals [on June 18, 2026](https://developers.google.com/gemini-code-assist/resources/release-notes), and the successor, [Antigravity](https://antigravity.google/), is not another extension but a separate agentic IDE (a Cursor-style VS Code fork; see [choosing an editor](#choosing-between-rstudio-positron-and-vs-code)) – so the bolt-on path for Gemini in VS Code is effectively ending.
 
 > [!TIP]
 > The quickest way to start an R session is to click the **R: (not attached)** indicator in VS Code's bottom status bar; it should launch R in a new terminal and switch to **R [VERSION]** in the status bar.
@@ -165,9 +165,9 @@ Installing it depends on the editor:
 
 Then pick a provider from the **LLM Providers** dialog, on the welcome screen or from the gear menu in the Assistant pane:
 
-- **[Posit AI](https://docs.posit.co/posit-ai/)** is Posit's own managed service, and the fewest steps of anything in this guide: sign in once, with no key to obtain, store, or rotate, and a zero-data-retention agreement with the model vendor. It is a subscription of its own, separate from any Claude or ChatGPT plan you hold, and it buys a credit allowance rather than unlimited use: $20 a month including $15 of credits, after a one-time $5 trial. Posit currently offers no academic discount.
+- **[Posit AI](https://docs.posit.co/posit-ai/)** is Posit's own managed service, and the fewest steps of anything in this guide: sign in once, with no key to obtain, store, or rotate, and a zero-data-retention agreement with the model vendor. It is a subscription of its own, separate from any existing Claude or ChatGPT plan, and it buys a credit allowance rather than unlimited use: $20 a month including $15 of credits, after a one-time $5 trial. Posit currently offers no academic discount.
 
-- **Any other provider** puts you on [bring your own key](#bring-your-own-key-byok). Anthropic, OpenAI, Google Gemini, OpenRouter, DeepSeek, AWS Bedrock, Google Vertex AI, Microsoft Foundry, Snowflake Cortex, Databricks, local Ollama, and local LM Studio each have an entry, and **OpenAI compatible** takes a base URL, which is how you point the assistant at a university or employer gateway.
+- **Any other provider** puts you on [bring your own key](#bring-your-own-key-byok). Anthropic, OpenAI, Google Gemini, OpenRouter, DeepSeek, AWS Bedrock, Google Vertex AI, Microsoft Foundry, Snowflake Cortex, Databricks, local Ollama, and local LM Studio each have an entry, and **OpenAI compatible** takes a base URL, which is how to point the assistant at a university or employer gateway.
 
 Whichever provider you choose, the model must be **good at tool calling** because that is the mechanism the assistant uses to reach your session. Posit warns that many models have too little tool-calling ability to drive the assistant well, and advises against running a local model in the same session as your work. A weak model will connect and then use the tools badly, which looks like the assistant ignoring your data rather than like a configuration error.
 
@@ -190,7 +190,7 @@ An agentic command-line tool reads and edits files across your project, runs com
 
 Most people end up using more than one for different tasks. The differences in raw code quality matter less than fit with your existing accounts, your budget, and how much autonomy you are comfortable granting.
 
-**Provider-agnostic alternatives.** The three above are each aligned with one vendor's models (Anthropic, OpenAI, Google). A parallel class of open-source agents is instead model-agnostic: [OpenCode](https://opencode.ai/), among others, is a drop-in terminal coding agent that you can point at almost any backend – a commercial API, a local or [Ollama Cloud](https://docs.ollama.com/cloud) open-weight model, or an institutional endpoint such as a university-hosted LLM you reach with an API key. It is MCP capable, and so it still benefits from the [section 4](#4-connecting-an-assistant-to-your-live-r-session) bridge. For anyone with a subsidized or self-hosted model, this is often the cheapest and most privacy-preserving way to drive a capable assistant that still sits beside your IDE.
+**Provider-agnostic alternatives.** The three above are each aligned with one vendor's models (Anthropic, OpenAI, Google). A parallel class of open-source agents is instead model-agnostic: [OpenCode](https://opencode.ai/), among others, is a drop-in terminal coding agent for almost any backend – a commercial API, a local or [Ollama Cloud](https://docs.ollama.com/cloud) open-weight model, or an institutional endpoint such as a university-hosted LLM you reach with an API key. It is MCP capable, and so it still benefits from the [section 4](#4-connecting-an-assistant-to-your-live-r-session) bridge. For anyone with a subsidized or self-hosted model, this is often the cheapest and most privacy-preserving way to drive a capable assistant that still sits beside your IDE.
 
 **Running them inside an IDE terminal.** Each of these coding assistants can be run alone, but it has become very common to use the CLI versions to complement the features of a sophisticated Integrated Development Environment (IDE), like the ones discussed in [section 2](#2-choosing-an-editor). Many IDEs now have special extensions that provide a more seamless frontend to operating the coding assistants.
 
@@ -209,7 +209,7 @@ Which harness you pair a key with is a separate question:
 
 - **[Posit Assistant](#posit-assistant)** accepts your key directly and keeps its native session access, which makes it the strongest BYOK setup for R specifically.
 - **VS Code's built-in chat** accepts a key from most providers and needs no GitHub account or Copilot plan for chat and agent work, though completions still do.
-- **[OpenCode](https://opencode.ai/)** is a model-agnostic terminal agent you can point at almost any backend, and because it is MCP capable, it still reaches your session through [section 4](#4-connecting-an-assistant-to-your-live-r-session).
+- **[OpenCode](https://opencode.ai/)** is a model-agnostic terminal agent for almost any backend, and because it is MCP capable, it still reaches your session through [section 4](#4-connecting-an-assistant-to-your-live-r-session).
 
 Provider choice is orthogonal to everything else here: it determines who supplies and bills for the model, not how much the assistant can see of your R session.
 
@@ -231,7 +231,7 @@ A newer and more automated variant: instead of you ferrying text, an agent opera
 
 Much of the real work in R lives in objects that exist only in your running session, and so an assistant that cannot see them is guessing. How it gets that access depends entirely on *where the harness runs*.
 
-**An assistant inside your IDE already has it.** [Posit Assistant](#posit-assistant) runs in the process hosting R; its session tools are built in and there is nothing to configure. This is a property of the harness rather than of the model: any provider you configure calls the same tools, provided the model is capable enough to use them.
+**An assistant inside your IDE already has it.** [Posit Assistant](#posit-assistant) runs in the process hosting R; its session tools are built in and there is nothing to configure. This is a property of the harness rather than of the model: any configured provider calls the same tools, provided the model is capable enough to use them.
 
 **An assistant outside your IDE needs a bridge**, and that bridge is the [Model Context Protocol](https://modelcontextprotocol.io/) (MCP). Sources of data or capability act as MCP *servers*; the assistants that use them act as MCP *clients*. Running an MCP server inside R lets an outside agent query your workspace and read your installed-package documentation. Three R packages matter here:
 
@@ -247,7 +247,7 @@ Even with Posit Assistant, the MCP server is worth adding: its documentation too
 
 ### R as an MCP server: mcptools and btw
 
-Here R is the thing being called. The [Model Context Protocol](https://modelcontextprotocol.io/) (MCP) lets a coding agent call tools you expose. For R that means an agent can **query the live state of your R session** (the data frames and fitted objects in your global environment) and **read the documentation of the packages you actually have installed** (which can reduce coding hallucinations). That directly addresses [the statefulness catch](#the-statefulness-catch) above; instead of guessing function arguments or re-deriving your data, the agent inspects the real thing.
+Here R is the thing being called. The [Model Context Protocol](https://modelcontextprotocol.io/) (MCP) lets a coding agent call the tools R exposes. For R that means an agent can **query the live state of your R session** (the data frames and fitted objects in your global environment) and **read the documentation of the packages you actually have installed** (which can reduce coding hallucinations). That directly addresses [the statefulness catch](#the-statefulness-catch) above; instead of guessing function arguments or re-deriving your data, the agent inspects the real thing.
 
 [`mcptools`](https://posit-dev.github.io/mcptools/) is the protocol layer. In practice, you start from [`btw`](https://posit-dev.github.io/btw/), which ships a ready-made server exposing those documentation and session tools. Setup is two one-time steps.
 
@@ -299,16 +299,16 @@ The `requireNamespace()` guard keeps R startup from erroring on a machine where 
    chat$chat("Why is my lmer model failing to converge?")
    ```
 
-3. **Tools for other clients and servers.** `btw_tools()` returns tool objects you can register with any `ellmer` chat, and `btw_mcp_server()` is the MCP server used in the section above. Same tools, whether R is the client or the server.
+3. **Tools for other clients and servers.** `btw_tools()` returns tool objects to register with any `ellmer` chat, and `btw_mcp_server()` is the MCP server used in the section above. Same tools, whether R is the client or the server.
 
 > [!CAUTION]
 > `btw`'s optional run-R tool executes model-written code in your global environment with no sandbox and, as of current `shinychat` and `ellmer`, no review-before-execution step. It is off by default for good reason. Enable it only in a throwaway or sandboxed session, never in a publicly reachable app.
 
 ### Force multiplier: the bridge across every setup
 
-The native tooling upgrades whichever assistant from [section 3](#3-choosing-an-assistant-model-and-harness) you already use rather than replacing it. It hands the model your real session state and the documentation of the packages you actually have installed, which removes the failure named at the top of this guide, where the model guesses at column types or invents a function signature. How much that helps scales with how tightly it is wired in.
+The native tooling upgrades any assistant from [section 3](#3-choosing-an-assistant-model-and-harness) rather than replacing it. It hands the model your real session state and the documentation of the packages you actually have installed, which removes the failure named at the top of this guide, where the model guesses at column types or invents a function signature. How much that helps scales with how tightly it is wired in.
 
-| Your setup (exemplar)                                                                              | What the `btw`/`mcptools` bridge adds                                                                                           |
+| Setup                                                                                              | What the `btw`/`mcptools` bridge adds                                                                                           |
 | -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
 | Stand-alone chat ([claude.ai](https://claude.ai/), ChatGPT)                                        | `btw()` snapshots your objects and docs to the clipboard – a manual paste with no live link, but far better than hand-copying   |
 | In-IDE assistant (Posit Assistant; VS Code + Copilot)                                              | register `btw_mcp_server()` and the chat can pull live objects and installed-package docs on demand, not just your open files   |
@@ -362,7 +362,7 @@ This is less an integration approach than the infrastructure that makes the othe
 
 ## Use-case quick reference
 
-| If you want to...                                       | Reach for                                                                         |
+| Goal                                                    | Reach for                                                                         |
 | ------------------------------------------------------- | --------------------------------------------------------------------------------- |
 | Ask one-off questions, paste a traceback                | [A stand-alone chat](#copy-and-paste-stand-alone-chat)                            |
 | Gather session context to paste into any chat           | [`btw()`](#btw-the-connective-layer)                                              |
