@@ -3,7 +3,7 @@
 A short field guide to using large language models (LLMs) alongside R. It begins with the three parts of any R and LLM setup: the editor, the assistant, and the connection to your live R session. It then works through the options for each, including running an MCP server inside R so an assistant can read your session and your installed-package documentation. This guide is written for those who already know R.
 
 > [!NOTE]
-> This space moves fast. Versions, product names, and defaults change often. Treat everything below as a starting point and check the linked docs. Last reviewed August 2026.
+> This space moves fast. Versions, product names, and defaults change often. Treat everything below as a starting point, and check the linked docs. Last reviewed August 2026.
 
 ---
 
@@ -110,7 +110,7 @@ Both come from Posit, both install side by side, and both now host the same AI a
 > [!TIP]
 > The quickest way to start an R session is to click the **R: (not attached)** indicator in VS Code's bottom status bar; it should launch R in a new terminal and switch to **R [VERSION]** in the status bar.
 >
-> If the status bar remains **not attached** and you see `could not find function '.vsc.attach'` in the R session started in the terminal, you may be seeing the symptoms of a [known issue](https://github.com/REditorSupport/vscode-R/issues/1696) stemming from a change in R 4.6.0. To fix this issue, you can edit your `.Rprofile` file to ensure that `.vsc.attach` is properly defined when R loads. To do so, open your `.Rprofile` with `usethis::edit_r_profile()` (which finds the right file on Windows, macOS, and Linux) and then add this block **at the very end of the file:**
+> If the status bar remains **not attached** and you see `could not find function '.vsc.attach'` in the R session started in the terminal, you may be seeing the symptoms of a [known issue](https://github.com/REditorSupport/vscode-R/issues/1696) stemming from a change in R 4.6.0. To fix this issue, you can edit your `.Rprofile` file to ensure that `.vsc.attach` is properly defined when R loads. To do so, open your `.Rprofile` with `usethis::edit_r_profile()` (which finds the right file on Windows, macOS, and Linux), and then add this block **at the very end of the file:**
 >
 > ```r
 > # Place at very end of .Rprofile to mimic the startup behavior of R versions before 4.6.0
@@ -143,7 +143,7 @@ Plain VS Code sits apart from both: it is the most flexible host for AI extensio
 
 Browser-driving agents pair naturally with R that already lives in the browser, and cloud R is useful on its own when you want to avoid a local install or give students a uniform environment.
 
-- [Posit Cloud](https://posit.cloud/) gives you a hosted RStudio environment in the browser, with shareable projects, which is handy for teaching and collaboration.
+- [Posit Cloud](https://posit.cloud/) gives you a hosted RStudio environment in the browser, with shareable projects, which is useful for teaching and collaboration.
 - [Google Colab](https://colab.research.google.com/) supports R two ways: switch the runtime to R under *Runtime > Change runtime type*, or stay in a Python runtime and use the `rpy2` magics (`%load_ext rpy2.ipython`, then `%%R` cells) to mix R and Python. The R runtime resets when you reopen a notebook, and so package installs must be rerun; Drive mounting is also limited in the R runtime.
 
 > *Aside:* [WebR](https://docs.r-wasm.org/webr/latest/) is R compiled to WebAssembly, and so it runs entirely in the browser with no server. It is excellent for *embedding* R into web pages and interactive teaching materials, but it is a poor host for an agentic coding loop. Use it to ship R-backed widgets, not to write code with an assistant.
@@ -158,7 +158,7 @@ An assistant is a **model** plus a **harness**: the model generates, and the har
 
 Installing it depends on the editor:
 
-- **In RStudio** (2026.04.0 or later), click the **Posit Assistant** toolbar button, and then **Install Posit Assistant** to fetch the add-in.
+- **In RStudio** (2026.04.0 or later), click the **Posit Assistant** toolbar button and then **Install Posit Assistant** to fetch the add-in.
 - **In Positron** (2026.07 or later), it is already there.
 
 Then pick a provider from the **LLM Providers** dialog, on the welcome screen or from the gear menu in the Assistant pane:
@@ -180,7 +180,7 @@ An agentic command-line tool reads and edits files across your project, runs com
 
   - **Desktop alternative:** On Windows and macOS, the [Claude Desktop app](https://claude.com/product/overview) includes a **Code** tab that is a full-featured desktop frontend for Claude Code, including support for skills, customizable configuration, memory, and MCP servers (see [section 4](#r-as-an-mcp-server-mcptools-and-btw)). Whereas the Claude Code interface in the **Code** tab can manage (and edit) files in an associated folder, the default **Chat** tab cannot. It can generate Artifacts that can be downloaded, but otherwise the **Chat** tab (unlike the **Code** tab) is restricted to copy-and-paste access (as in [copy and paste](#copy-and-paste-stand-alone-chat)).
 
-- **[Codex CLI](https://developers.openai.com/codex/cli/)** (OpenAI). Open-source (Apache 2.0), rebuilt in Rust for speed, notably token-efficient, with strong kernel-level sandboxing. Bundled with ChatGPT plans, and paired with a macOS desktop app and an IDE extension so you can start in the terminal and continue in the app.
+- **[Codex CLI](https://developers.openai.com/codex/cli/)** (OpenAI). Open-source (Apache 2.0), rebuilt in Rust for speed, notably token-efficient, with strong kernel-level sandboxing. Bundled with ChatGPT plans and paired with a macOS desktop app and an IDE extension so you can start in the terminal and continue in the app.
 
   - **Desktop alternative:** On Windows and macOS, the [Codex Desktop app](https://chatgpt.com/codex/) is a stand-alone, full-featured desktop frontend for OpenAI Codex, including support for skills, customizable configuration, memory, and [MCP servers](#r-as-an-mcp-server-mcptools-and-btw).
 
@@ -351,7 +351,7 @@ Watch your token usage with `token_usage()`; cost grows with conversation length
 
 - **Verify generated statistics code.** Plausible-looking R is not correct R. Model-selection logic, contrast coding, random-effects structure, and the meaning of a fitted object's slots all reward a careful read. Treat agent output as a fast first draft to react to, not an answer.
 - **Mind what the assistant can see, and do.** Live-session access is data exposure; UI-driving and desktop agents go further and act with your privileges, which widens the prompt-injection surface. Decide consciously what each tool can reach before you wire it up.
-- **Cost and keys.** Agentic and in-IDE-assistant workflows bill against your API key and scale with context length and turns. For students and self-funded work, this matters; prefer cheaper models for routine tasks and reserve top-tier models for hard problems.
+- **Cost and keys.** Agentic and in-IDE-assistant workflows bill against your API key and scale with context length and turns. For students and self-funded work, this matters; prefer cheaper models for routine tasks, and reserve top-tier models for hard problems.
 - **Reproducibility.** If an LLM touched a result that goes into a paper, the pipeline should still run without it. Script the calls and keep a human-readable record of what the model did.
 
 ## Use-case quick reference
