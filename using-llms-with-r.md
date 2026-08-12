@@ -1,6 +1,6 @@
 # Using LLMs with R: A Practical Map of the Approaches
 
-A short field guide to using large language models (LLMs) alongside R. It covers the straightforward setups and the more involved options, including running an MCP server inside R so an assistant can read your live session and your installed-package documentation. This guide is written for those who already know R.
+A short field guide to using large language models (LLMs) alongside R. It begins with the three parts of any R and LLM setup: the editor, the assistant, and the connection to your live R session. It then works through the options for each, including running an MCP server inside R so an assistant can read your session and your installed-package documentation. This guide is written for those who already know R.
 
 > [!NOTE]
 > This space moves fast. Versions, product names, and defaults change often. Treat everything below as a starting point and check the linked docs. Last reviewed August 2026.

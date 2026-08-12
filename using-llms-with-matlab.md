@@ -1,6 +1,6 @@
 # Using LLMs with MATLAB: A Practical Map of the Approaches
 
-A short field guide to using large language models (LLMs) alongside MATLAB. A quick start comes first, then the alternatives and the more involved options. Those include MathWorks' MCP Server, which lets an assistant run and check code in your live MATLAB session and read the toolboxes you actually have installed. This guide is written for those who already know MATLAB.
+A short field guide to using large language models (LLMs) alongside MATLAB. It begins with basic guidance for getting started and then elaborates on more involved options for advanced work. Those include MathWorks' MCP Server, which lets an assistant run and check code in your live MATLAB session and read the toolboxes you actually have installed. This guide is written for those who already know MATLAB.
 
 > [!NOTE]
 > This space moves fast. Versions, product names, and defaults change often. Treat everything below as a starting point and check the linked docs. Last reviewed August 2026.
