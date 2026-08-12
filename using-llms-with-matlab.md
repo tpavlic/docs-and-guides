@@ -54,7 +54,7 @@ This is the recommended default for most people. **Steps 1–3 are all you need 
    claude mcp add --transport stdio matlab -- /full/path/to/matlab-mcp-server
    ```
 
-   **Connect it to the MATLAB you are actually using.** Run the helper once to enable session sharing, then call `shareMATLABSession()` in your desktop session so the agent attaches to *that* workspace instead of spawning a fresh, empty one (full detail in [section 5](#connecting-to-your-running-session-session-modes)):
+   **Connect it to the MATLAB you are actually using.** Run the helper once to enable session sharing, and then call `shareMATLABSession()` in your desktop session so the agent attaches to *that* workspace instead of spawning a fresh, empty one (full detail in [section 5](#connecting-to-your-running-session-session-modes)):
 
    ```bash
    /full/path/to/matlab-mcp-server --setup-matlab
@@ -173,7 +173,7 @@ In modern agentic AI, different agents and resources talk to each other through 
 
 Here MATLAB is the thing being called. The [MATLAB MCP Server](https://github.com/matlab/matlab-mcp-server) is MathWorks' official MCP server. It exposes a focused set of tools that an agent can call:
 
-- **`detect_matlab_toolboxes`** – list installed MATLAB and toolbox versions, so the agent only suggests functions you can actually run.
+- **`detect_matlab_toolboxes`** – list installed MATLAB and toolbox versions so the agent only suggests functions you can actually run.
 - **`check_matlab_code`** – static analysis of a `.m` file (style issues, deprecated functions, performance concerns).
 - **`evaluate_matlab_code`** – execute MATLAB code and return the output.
 - **`run_matlab_file`** – execute a `.m` script.
@@ -280,15 +280,15 @@ Furthermore, the newer **[MATLAB AI Agent SDK](https://github.com/matlab/matlab-
 
 The MCP server upgrades any approach from sections 1–4 rather than replacing it. It lets the model run code in your real session and read the toolboxes you actually have, which removes the failure named at the top of this guide, where the model guesses at an array's shape, invents a function signature, or assumes a toolbox you do not own. How much that helps scales with how tightly it is wired in.
 
-| Setup                                                                        | What the MATLAB MCP Server adds                                                                                                     |
-| ---------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| Stand-alone chat ([claude.ai](https://claude.ai/), ChatGPT)                  | nothing automatic – you still paste; the server is for assistants that can call tools                                               |
-| In-editor assistant (MATLAB Copilot; VS Code Chat)                           | register the server and the assistant can run code, check it, run tests, and enumerate toolboxes, not just read your open files     |
-| Agentic tool, CLI or desktop (Claude Code in a terminal or its **Code** tab) | the server **plus** `shareMATLABSession()` lets the agent run against your *live* workspace mid-task, then edit `.m` files to match |
+| Setup                                                                        | What the MATLAB MCP Server adds                                                                                                         |
+| ---------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| Stand-alone chat ([claude.ai](https://claude.ai/), ChatGPT)                  | nothing automatic – you still paste; the server is for assistants that can call tools                                                   |
+| In-editor assistant (MATLAB Copilot; VS Code Chat)                           | register the server and the assistant can run code, check it, run tests, and enumerate toolboxes, not just read your open files         |
+| Agentic tool, CLI or desktop (Claude Code in a terminal or its **Code** tab) | the server **plus** `shareMATLABSession()` lets the agent run against your *live* workspace mid-task, and then edit `.m` files to match |
 
 **A worked example.** Say Claude Code is running in a terminal and you ask it to fix a script that errors when indexing into a struct array of results. Without the bridge, the agent sees only the file: it guesses the field is `result` (it is actually `results`), edits the file, runs it with `matlab -batch` against an empty workspace, reads the error, and guesses again – a slow round-trip that fails outright if the data lives only in your interactive workspace and never as a file the agent can load. With a shared session, it instead calls `evaluate_matlab_code` to inspect the actual struct, reads the real field names and sizes, confirms the indexing, and makes the correct edit on the first pass. It can also call `detect_matlab_toolboxes` first and avoid proposing a function from a toolbox you have not licensed – or recover gracefully when it does: in MathWorks' [polynomial-fitting walkthrough](https://blogs.mathworks.com/matlab/2025/11/03/exploring-the-matlab-model-context-protocol-mcp-core-server-with-claude-desktop/), the agent's first attempt called `crossvalind` from a Bioinformatics Toolbox the author did not have, read the resulting error, and rewrote the script without it, all in one pass.
 
-The wiring is just the pieces shown earlier in this section – register the server with your assistant, then `--setup-matlab` and `shareMATLABSession()` so the agent reaches the session you are actually working in. Those steps settle the statefulness catch in [sections 3](#3-coding-assistant-as-script-editor-edit-m-files-without-session-information) and [4](#4-editors-and-ides-that-simplify-use-of-coding-assistants-alongside-matlab) into a non-issue, and it is why the [quick start](#1-quick-start-llm-integrated-with-a-live-matlab-session) pairs Claude Code with the MCP server rather than running it blind.
+The wiring is just the pieces shown earlier in this section – register the server with your assistant, and then `--setup-matlab` and `shareMATLABSession()` so the agent reaches the session you are actually working in. Those steps settle the statefulness catch in [sections 3](#3-coding-assistant-as-script-editor-edit-m-files-without-session-information) and [4](#4-editors-and-ides-that-simplify-use-of-coding-assistants-alongside-matlab) into a non-issue, and it is why the [quick start](#1-quick-start-llm-integrated-with-a-live-matlab-session) pairs Claude Code with the MCP server rather than running it blind.
 
 ## Cross-cutting cautions
 
@@ -304,7 +304,7 @@ The wiring is just the pieces shown earlier in this section – register the ser
 This is less an integration approach than the infrastructure that makes the others safe to lean on. Agents are most useful when their environment is pinned and their autonomy is bounded.
 
 - **Pin your environment.** Record the MATLAB release and the toolbox versions a generated analysis depends on (the agent can capture them with `detect_matlab_toolboxes`/`ver`), and check them into the project so the analysis runs the same way next month and on a student's machine.
-- **Scope and sandbox.** Keep the agent's working folder to a dedicated project directory, and for risky autonomy run MATLAB inside a container (MathWorks' [prebuilt MATLAB image](https://hub.docker.com/r/mathworks/matlab) on Docker Hub, or its [Dockerfiles](https://github.com/mathworks-ref-arch/matlab-dockerfile) if you would rather build your own) so an agentic CLI runs with less risk to your real filesystem. The tradeoff is that container isolation complicates attaching to the *interactive* desktop session of [section 5](#connecting-to-your-running-session-session-modes); a common pattern is to develop interactively with a shared session, then verify the final result inside a clean container.
+- **Scope and sandbox.** Keep the agent's working folder to a dedicated project directory, and for risky autonomy run MATLAB inside a container (MathWorks' [prebuilt MATLAB image](https://hub.docker.com/r/mathworks/matlab) on Docker Hub, or its [Dockerfiles](https://github.com/mathworks-ref-arch/matlab-dockerfile) if you would rather build your own) so an agentic CLI runs with less risk to your real filesystem. The tradeoff is that container isolation complicates attaching to the *interactive* desktop session of [section 5](#connecting-to-your-running-session-session-modes); a common pattern is to develop interactively with a shared session, and then verify the final result inside a clean container.
 
 ## Use-case quick reference
 

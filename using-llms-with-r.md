@@ -101,11 +101,11 @@ Both come from Posit, both install side by side, and both now host the same AI a
 
 2. **Plots.** Once the R session is attached (see the troubleshooting tip below), plots render automatically in a tab beside your editor through the extension's built-in PNG viewer – no extra setup, because plot capture is part of the session watcher. For a more interactive viewer that resizes, zooms, keeps a plot history, and follows your light/dark theme like RStudio's pane, there are two solid options:
 
-   - [`httpgd`](https://nx10.dev/httpgd/articles/b01_vscode.html) upgrades the extension's built-in viewer in place. Install it in R with `install.packages("httpgd")`, then enable the `r.plot.useHttpgd` setting (Cmd/Ctrl+`,` to open Settings, then search for it). **Restart the R session afterward:** the graphics device is chosen when the session attaches, and so the toggle does nothing until you start a fresh R terminal. Plots then open as a resizable SVG tab beside your editor.
+   - [`httpgd`](https://nx10.dev/httpgd/articles/b01_vscode.html) upgrades the extension's built-in viewer in place. Install it in R with `install.packages("httpgd")`, and then enable the `r.plot.useHttpgd` setting (Cmd/Ctrl+`,` opens Settings, where you can search for it). **Restart the R session afterward:** the graphics device is chosen when the session attaches, and so the toggle does nothing until you start a fresh R terminal. Plots then open as a resizable SVG tab beside your editor.
 
    - For the closest thing to RStudio's Plots pane, the third-party [R Plot Pro extension](https://marketplace.visualstudio.com/items?itemName=ofurkancoban.r-plot-pro) lives in the bottom panel beside the terminal and wraps plots in familiar chrome: a toolbar for paging back and forth through plot history, zooming, and saving or exporting, plus a thumbnail history strip down the side. RStudio migrants tend to find it the most recognizable of the options.
 
-3. **AI layer.** VS Code ships its own **Chat**, and GitHub Copilot is one of the providers it can run on rather than the feature itself, so pointing Chat at [a key of your own](#bring-your-own-key-byok) works without a Copilot plan. Beyond that, layer on whichever assistant you want as an extension – [Claude Code](https://marketplace.visualstudio.com/items?itemName=anthropic.claude-code) or [Codex](https://marketplace.visualstudio.com/items?itemName=openai.chatgpt) – both searchable under the Extensions pane. Google is the exception: its Gemini Code Assist *extension* and Gemini CLI stop serving individuals [on June 18, 2026](https://developers.google.com/gemini-code-assist/resources/release-notes), and the successor, [Antigravity](https://antigravity.google/), is not another extension but a separate agentic IDE (a Cursor-style VS Code fork; see [choosing an editor](#choosing-between-rstudio-positron-and-vs-code)) – so the bolt-on path for Gemini in VS Code is effectively ending.
+3. **AI layer.** VS Code ships its own **Chat**, and GitHub Copilot is one of the providers it can run on rather than the feature itself, and so pointing Chat at [a key of your own](#bring-your-own-key-byok) works without a Copilot plan. Beyond that, layer on whichever assistant you want as an extension – [Claude Code](https://marketplace.visualstudio.com/items?itemName=anthropic.claude-code) or [Codex](https://marketplace.visualstudio.com/items?itemName=openai.chatgpt) – both searchable under the Extensions pane. Google is the exception: its Gemini Code Assist *extension* and Gemini CLI stop serving individuals [on June 18, 2026](https://developers.google.com/gemini-code-assist/resources/release-notes), and the successor, [Antigravity](https://antigravity.google/), is not another extension but a separate agentic IDE (a Cursor-style VS Code fork; see [choosing an editor](#choosing-between-rstudio-positron-and-vs-code)) – so the bolt-on path for Gemini in VS Code is effectively ending.
 
 > [!TIP]
 > The quickest way to start an R session is to click the **R: (not attached)** indicator in VS Code's bottom status bar; it should launch R in a new terminal and switch to **R [VERSION]** in the status bar.
@@ -158,7 +158,7 @@ An assistant is a **model** plus a **harness**: the model generates, and the har
 
 Installing it depends on the editor:
 
-- **In RStudio** (2026.04.0 or later), click the **Posit Assistant** toolbar button, then **Install Posit Assistant** to fetch the add-in.
+- **In RStudio** (2026.04.0 or later), click the **Posit Assistant** toolbar button, and then **Install Posit Assistant** to fetch the add-in.
 - **In Positron** (2026.07 or later), it is already there.
 
 Then pick a provider from the **LLM Providers** dialog, on the welcome screen or from the gear menu in the Assistant pane:
@@ -180,7 +180,7 @@ An agentic command-line tool reads and edits files across your project, runs com
 
   - **Desktop alternative:** On Windows and macOS, the [Claude Desktop app](https://claude.com/product/overview) includes a **Code** tab that is a full-featured desktop frontend for Claude Code, including support for skills, customizable configuration, memory, and MCP servers (see [section 4](#r-as-an-mcp-server-mcptools-and-btw)). Whereas the Claude Code interface in the **Code** tab can manage (and edit) files in an associated folder, the default **Chat** tab cannot. It can generate Artifacts that can be downloaded, but otherwise the **Chat** tab (unlike the **Code** tab) is restricted to copy-and-paste access (as in [copy and paste](#copy-and-paste-stand-alone-chat)).
 
-- **[Codex CLI](https://developers.openai.com/codex/cli/)** (OpenAI). Open-source (Apache 2.0), rebuilt in Rust for speed, notably token-efficient, with strong kernel-level sandboxing. Bundled with ChatGPT plans, and paired with a macOS desktop app and an IDE extension, so you can start in the terminal and continue in the app.
+- **[Codex CLI](https://developers.openai.com/codex/cli/)** (OpenAI). Open-source (Apache 2.0), rebuilt in Rust for speed, notably token-efficient, with strong kernel-level sandboxing. Bundled with ChatGPT plans, and paired with a macOS desktop app and an IDE extension so you can start in the terminal and continue in the app.
 
   - **Desktop alternative:** On Windows and macOS, the [Codex Desktop app](https://chatgpt.com/codex/) is a stand-alone, full-featured desktop frontend for OpenAI Codex, including support for skills, customizable configuration, memory, and [MCP servers](#r-as-an-mcp-server-mcptools-and-btw).
 
@@ -264,7 +264,7 @@ Codex follows the same pattern (or add a `[mcp_servers.r-btw]` block to `~/.code
 codex mcp add r-btw -- Rscript -e "btw::btw_mcp_server()"
 ```
 
-**Second, add a session hook to your `.Rprofile`** (once), so each interactive session reaches into your *running* environment instead of the server only spawning fresh, empty ones:
+**Second, add a session hook to your `.Rprofile`** (once) so each interactive session reaches into your *running* environment instead of the server only spawning fresh, empty ones:
 
 ```r
 # usethis::edit_r_profile() to open it
@@ -321,7 +321,7 @@ The wiring is just the two pieces shown earlier in this section: register `btw_m
 
 ## 5. Using an LLM inside R code: ellmer
 
-Use this when you do not want an assistant so much as to *program with* a model: classify free text, extract structured fields, build a domain chatbot, or run a model over many rows. [`ellmer`](https://ellmer.tidyverse.org/) is the core package. It supports many providers (Anthropic, OpenAI, Google, AWS Bedrock, Azure, and more, including locally hosted open-weight models), with streaming, tool/function calling, and structured data extraction. Chat objects are stateful R6 objects, so each turn builds on the last.
+Use this when you do not want an assistant so much as to *program with* a model: classify free text, extract structured fields, build a domain chatbot, or run a model over many rows. [`ellmer`](https://ellmer.tidyverse.org/) is the core package. It supports many providers (Anthropic, OpenAI, Google, AWS Bedrock, Azure, and more, including locally hosted open-weight models), with streaming, tool/function calling, and structured data extraction. Chat objects are stateful R6 objects, and so each turn builds on the last.
 
 ```r
 library(ellmer)
