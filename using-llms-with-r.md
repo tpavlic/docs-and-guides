@@ -25,10 +25,9 @@ A short field guide to the main ways of putting a large language model to work a
   - [The statefulness catch](#the-statefulness-catch)
   - [R as an MCP server: mcptools and btw](#r-as-an-mcp-server-mcptools-and-btw)
   - [btw: the connective layer](#btw-the-connective-layer)
-  - [Force multiplier: the bridge across every setup](#force-multiplier-the-bridge-across-every-setup)
+  - [What the bridge adds to each assistant](#what-the-bridge-adds-to-each-assistant)
 - [5. Using an LLM inside R code: ellmer](#5-using-an-llm-inside-r-code-ellmer)
 - [Cross-cutting cautions](#cross-cutting-cautions)
-- [Reproducibility and sandboxing](#reproducibility-and-sandboxing)
 - [Use-case quick reference](#use-case-quick-reference)
 - [Selected references](#selected-references)
 
@@ -79,7 +78,7 @@ To support developer flexibility, the rest of this guide will go into detail abo
 > This guide covers using AI models to assist in using R. If instead an AI model is to be used *inside* R code (rather than beside it), the package **[`ellmer`](https://ellmer.tidyverse.org/)** can be used to make R an AI-calling agent/harness itself. See [Section 5](#5-using-an-llm-inside-r-code-ellmer) for details.
 
 > [!IMPORTANT]
-> Regardless of the AI option you choose with R, best practice for reproducibility in R recommends using **[`renv`](https://rstudio.github.io/renv/)** to pin package versions and using **[Docker](https://rocker-project.org/)** to create clean, isolated, exportable R environments.
+> Regardless of the AI option you choose with R, best practice for reproducibility in R recommends using **[`renv`](https://rstudio.github.io/renv/)** to pin package versions and using **[Docker](https://rocker-project.org/)** to create clean, isolated, exportable R environments. Containerization is worth investigating for portability and reproducibility, but it does complicate both calling an AI model from inside R code and using an assistant to help write that code.
 
 ## 2. Choosing an editor
 
@@ -307,17 +306,17 @@ The `requireNamespace()` guard keeps R startup from erroring on a machine where 
 > [!CAUTION]
 > `btw`'s optional run-R tool executes model-written code in your global environment with no sandbox and, as of current `shinychat` and `ellmer`, no review-before-execution step. It is off by default for good reason. Enable it only in a throwaway or sandboxed session, never in a publicly reachable app.
 
-### Force multiplier: the bridge across every setup
+### What the bridge adds to each assistant
 
 The native tooling upgrades any assistant from [section 3](#3-choosing-an-assistant-model-and-harness) rather than replacing it. It hands the model your real session state and the documentation of the packages you actually have installed, which removes the failure named at the top of this guide, where the model guesses at column types or invents a function signature. How much that helps scales with how tightly it is wired in.
 
-| Setup                                                                                              | What the `btw`/`mcptools` bridge adds                                                                                           |
-| -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| Stand-alone chat ([claude.ai](https://claude.ai/), ChatGPT)                                        | `btw()` snapshots your objects and docs to the clipboard – a manual paste with no live link, but far better than hand-copying   |
-| In-IDE assistant (Posit Assistant; VS Code Chat)                                                   | register `btw_mcp_server()` and the chat can pull live objects and installed-package docs on demand, not just your open files   |
-| Agentic coding tool, CLI or desktop (Claude Code in a terminal or its **Code** tab; Codex Desktop) | the MCP server **plus** the `btw_mcp_session()` hook lets the agent inspect your *running* session mid-task, then edit to match |
+| Assistant                                                     | What the `btw` bridge adds                                                                                                                                                                                                                                |
+| ------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| A chat window ([claude.ai](https://claude.ai/), ChatGPT)      | `btw()` copies a structured snapshot of objects and package docs to the clipboard: a manual paste with no live link, but far better than hand-copying                                                                                                     |
+| [Posit Assistant](#posit-assistant) (RStudio, Positron)       | live session access is already built in, and it can reach help pages by executing `help()` in the session; `btw_mcp_server()` adds named documentation tools that return cleaned help pages, vignettes, and package NEWS without running code to get them |
+| An outside agent (Claude Code, Codex, OpenCode, VS Code Chat) | the MCP server **plus** the `btw_mcp_session()` hook is the only route into the running session, and the package docs come with it                                                                                                                        |
 
-**A worked example.** Say Claude Code is running in Positron's terminal and you ask it to fix a `dplyr` pipeline that errors on a grouping column. Without the bridge, the agent sees only the script: it guesses the column is `group` (it is actually `treatment_grp`), edits the file, runs it with `Rscript`, reads the error, and guesses again – a slow round-trip that fails outright if the data lives only in your interactive session and never as a file the agent can source. With `btw_mcp_session()` active, it instead calls the session tool, reads the data frame's real column names and types, confirms the grouping variable, and makes the correct edit on the first pass. The same holds for a non-converging model: it can read the fitted object's structure and the actual `lmer` call rather than inferring slot names.
+**A worked example of using an outside agent.** Say Claude Code is running in Positron's terminal and you ask it to fix a `dplyr` pipeline that errors on a grouping column. Without the bridge, the agent sees only the script: it guesses the column is `group` (it is actually `treatment_grp`), edits the file, runs it with `Rscript`, reads the error, and guesses again – a slow round-trip that fails outright if the data lives only in your interactive session and never as a file the agent can source. With `btw_mcp_session()` active, it instead calls the session tool, reads the data frame's real column names and types, confirms the grouping variable, and makes the correct edit on the first pass. The same holds for a non-converging model: it can read the fitted object's structure and the actual `lmer` call rather than inferring slot names.
 
 The wiring is just the two pieces shown earlier in this section: register `btw_mcp_server()` with Claude Code, and add `btw_mcp_session()` to your `.Rprofile` so the agent reaches the session you are actually working in. Those two steps settle [the statefulness catch](#the-statefulness-catch), which is why this guide pairs an outside agent with the `btw` MCP server rather than running it blind.
 
@@ -354,14 +353,7 @@ Watch your token usage with `token_usage()`; cost grows with conversation length
 - **Verify generated statistics code.** Plausible-looking R is not correct R. Model-selection logic, contrast coding, random-effects structure, and the meaning of a fitted object's slots all reward a careful read. Treat agent output as a fast first draft to react to, not an answer.
 - **Mind what the assistant can see, and do.** Live-session access is data exposure; UI-driving and desktop agents go further and act with your privileges, which widens the prompt-injection surface. Decide consciously what each tool can reach before you wire it up.
 - **Cost and keys.** Agentic and in-IDE-assistant workflows bill against your API key and scale with context length and turns. For students and self-funded work, this matters; prefer cheaper models for routine tasks and reserve top-tier models for hard problems.
-- **Reproducibility.** If an LLM touched a result that goes into a paper, the pipeline should still run without it. Pin versions, script the calls, and keep a human-readable record of what the model did.
-
-## Reproducibility and sandboxing
-
-This is less an integration approach than the infrastructure that makes the others safe to lean on. Agents are most useful when their environment is pinned and their autonomy is bounded.
-
-- **[`renv`](https://rstudio.github.io/renv/)** snapshots your package versions into a lockfile so a generated analysis runs the same way next month and on a student's machine.
-- **Docker** (for example the [rocker](https://rocker-project.org/) images) gives a clean, reproducible R environment and a sandbox in which an agentic CLI can run with less risk to your real filesystem. The tradeoff is that container isolation complicates the live-session introspection of [section 4](#4-connecting-an-assistant-to-your-live-r-session); reach for Docker when reproducibility or isolation is the priority rather than as your default interactive loop. A common pattern: develop interactively with the `btw` bridge, then verify the final result inside a clean container.
+- **Reproducibility.** If an LLM touched a result that goes into a paper, the pipeline should still run without it. Script the calls and keep a human-readable record of what the model did.
 
 ## Use-case quick reference
 
@@ -376,7 +368,6 @@ This is less an integration approach than the infrastructure that makes the othe
 | Let an agent see your real session and package docs     | [R as an MCP server](#r-as-an-mcp-server-mcptools-and-btw)                        |
 | Use a free, subsidized, or self-hosted model            | [Bring your own key](#bring-your-own-key-byok)                                    |
 | Call an LLM *from inside* your R code                   | [`ellmer`](#5-using-an-llm-inside-r-code-ellmer)                                  |
-| Pin versions or sandbox an autonomous agent             | [Docker and `renv`](#reproducibility-and-sandboxing)                              |
 
 ## Selected references
 
