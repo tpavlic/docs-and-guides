@@ -8,7 +8,7 @@ A personal collection of technical notes, documents, and guides I share with stu
 
 - **[Using LLMs with R](using-llms-with-r.md)** *(LLMs, R, tooling)*: Choosing an editor, an assistant, and a way for that assistant to reach your live R session, from a plain chat window to an MCP server running inside R
 - **[Using LLMs with MATLAB](using-llms-with-matlab.md)** *(LLMs, MATLAB, tooling)*: A map of the ways to use large language models alongside MATLAB, from copy-and-paste chat to agentic CLIs and the MATLAB MCP Server
-- **[Conferences as Work](academic-conference-guide.md)** *(academia, conferences, career)*: Choosing which conferences to attend, preparing for one, conducting yourself well during it, and following up afterward, with a closing section on adapting the advice to your temperament
+- **[Conferences Are Work](academic-conference-guide.md)** *(academia, conferences, career)*: Choosing which conferences to attend, preparing for one, conducting yourself well during it, and following up afterward, with a closing section on adapting the advice to your temperament
 
 ## How this repo is organized
 

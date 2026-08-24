@@ -1,4 +1,4 @@
-# Conferences as Work: A Guide for Graduate Students
+# Conferences Are Work: Choosing One and What to Do Before, During, and After
 
 - [1. Choosing conferences and planning for the job market](#1-choosing-conferences-and-planning-for-the-job-market)
   - [1.1 Which conferences, and how many](#11-which-conferences-and-how-many)
