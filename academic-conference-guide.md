@@ -64,14 +64,14 @@ When deciding whether a particular conference is worth it, consider:
 
 - Whether the people you most need to meet will be there. Look at last year's program and the list of invited speakers to get an idea of who might be there, and ask your advisor and others in your community who you might expect to see there.
 - Whether it has a proceedings and, if so, whether it is peer reviewed before acceptance, published by a recognizable organization with a DOI per paper, and well regarded in your field. In a proceedings-based field, this is usually the deciding feature; in an abstract-based field, it rarely applies.
-- Whether you have something to present and in what form. Presenting is worth much more than attending because it gives people a reason to approach you, and an accepted contribution is frequently a condition of eligibility for the student travel awards and society grants that pay for registration, travel, and lodging. Between a talk and a poster, do not assume the talk is better: a talk reaches the room for fifteen minutes, whereas a poster keeps you in one place for two hours with people who chose to walk over, which makes it much easier to talk with a wide range of people, including senior people who would never have queued after a talk. Choose the talk when you have a nearly polished topic (about to publish or very recently published, depending on your field's conventions). Ultimately, you will need to gain experience giving good talks, and so you should not avoid talks if you have something that is ready for presenting in that setting.
+- Whether you have something to present and in what form. Presenting is worth much more than attending because it gives people a reason to approach you, and an accepted contribution is frequently a condition of eligibility for the student travel awards and society grants that pay for registration, travel, and lodging. Between a talk and a poster, do not assume the talk is better: a talk reaches the room for fifteen minutes, whereas a poster keeps you in one place for two hours with people who chose to walk over, which makes it much easier to talk with a wide range of people, including senior people who would never have queued after a talk. That extra time is also better suited to work still being shaped by feedback as a poster invites back-and-forth conversation in a way a fifteen-minute talk cannot. Choose the talk when you have a nearly polished result (about to publish or very recently published, depending on your field's conventions), and the poster when the work still needs that kind of discussion to take its final shape. Ultimately, you will need to gain experience giving good talks, and so you should not avoid talks if you have something that is ready for presenting in that setting.
 - Whether it has hiring features you need this year: search-committee presence, career fairs, recruiter booths, candidate events (see [Section 1.2](#12-conferences-as-part-of-the-job-market)).
 - Cost, including whether travel awards, student registration rates, volunteer positions, or society student memberships can offset it.
 - **Your advisor's judgment.** Ask which meetings they think matter for your goals and whether they will be there to introduce you.
 
 Weighing these often means holding off on one meeting to wait for a better one later in the year, and you and your advisor should make that call together early rather than deadline by deadline. In proceedings-based fields, also decide before you submit where the paper goes if it is rejected (a later conference, a workshop, or a journal). The deadlines cascade, and a **rejection with no plan can cost a year.**
 
-A rough pattern that works for many students: one big society meeting early, one or two specialized meetings in the middle years when you have results to discuss, and then whichever meetings your target employers attend in the final two years. Apply for every student travel award you are eligible for; they are less competitive than they look, and the applications are short. **In proceedings-based fields,** participating on local teams as a mid-author helps build your CV even if you do not attend the conference, and this can be advantage of working in a large lab or building collaborations with other students you have met in classes or in neighboring labs.
+A rough pattern that works for many students: one big society meeting early, one or two specialized meetings in the middle years when you have results to discuss, and then whichever meetings your target employers attend in the final two years. Apply for every student travel award you are eligible for; they are less competitive than they look, and the applications are short. **In proceedings-based fields,** participating on local teams as a mid-author helps build your CV even if you do not attend the conference, and this can be an advantage of working in a large lab or building collaborations with other students you have met in classes or in neighboring labs.
 
 ### 1.2 Conferences as part of the job market
 
@@ -85,7 +85,7 @@ Conferences double as interviews, whether or not anyone calls them that. This is
 
     If it is within the job-market timing window for you, you should not feel awkward about bringing the topic up. Faculty are expecting this sort of exchange, and delaying it may actually be more frustrating or confusing to the faculty. If you are interested in working with the faculty, establish yourself as a competent potential colleague (first) and then ask about potential opportunities (if the conversation goes well). Do not wait for the faculty to bring postdoctoral position opportunities up; advocate for yourself, but do it in a polite and professional way.
 
-- **Faculty positions.** In fields where the society meeting is a hiring venue, being there the year before you apply, presenting, and having a coherent two-minute answer to "what will you do next" is part of the application. If departments are collecting CVs, drop one off and treat any conversation that follows as a professional conversation rather than an interview: nothing said there is binding on either side, and the purpose is to be recognized when your application arrives. Find out when hiring cycles in your field run and which meetings fall in the months before applications are due.
+- **Faculty positions.** In fields where the society meeting is a hiring venue, being there the year before you apply, presenting, and having a coherent two-minute answer to *"what will you do next"* is part of the application. If departments are collecting CVs, drop one off and treat any conversation that follows as a professional conversation rather than an interview: nothing said there is binding on either side, and the purpose is to be recognized when your application arrives. Find out when hiring cycles in your field run and which meetings fall in the months before applications are due.
 
 - **Industry positions.** Many conferences, particularly in computing and engineering, have career fairs, recruiter booths, and sponsor receptions. If industry is a possibility for you, find out which companies are sponsoring before you go, look at what their attendees work on, bring a one-page résumé in addition to your academic CV, and treat booth conversations as first-round interviews rather than swag collection. Recruiters at technical conferences are often engineers and researchers from the group that is hiring, not human-resources staff, and they will remember a good technical conversation.
 
@@ -110,7 +110,7 @@ Read the full program once it is released, not just the session titles. **For ea
 - Talks in adjacent areas that you want to learn about (attend most).
 - Talks by people you specifically want to meet (attend, and sit where you can reach them afterward).
 
-Then build a short list of people, ideally 5–10, whom you would most like to talk to. **Most of them should be faculty and senior researchers** who might have a postdoc, sit on a search committee, or otherwise matter to your next step, along with a few postdocs and senior students from those groups, who are easier to reach and can tell you how the group actually works. **Other students do not need to be on the list;** you will meet them organically at talks and events (see [Section 3.10](#310-other-students-colleagues-not-the-agenda)). A list made entirely of famous names is a list of people who will be busy, and so **include some mid-career** people (as in those at the "Associate Professor" rank) who are doing the work you care about. Note that very senior graduate students or postdocs who will be starting a lab soon **may have startup funds they need to spend** and could be good to talk to **if your own graduation timing makes sense** and you are interested in working with them as a postdoc. Junior faculty early in their program may also still have startup funds.
+Then build a short list of people, ideally 5–10, whom you would most like to talk to. **Most of them should be faculty and senior researchers** who might have a postdoc, sit on a search committee, or otherwise matter to your next step, along with a few postdocs and senior students from those groups, who are easier to reach and can tell you how the group actually works. **Other students do not need to be on the list;** you will meet them organically at talks and events (see [Section 3.10](#310-other-students-colleagues-not-the-agenda)). A list made entirely of famous names is a list of people who will be busy, and so **include some mid-career** people (such as those at the rank of Associate Professor) who are doing the work you care about. Also, when planning your list, remember that very senior graduate students or postdocs who will be starting a lab soon **may have startup funds they need to spend** and could be good to talk to **if your own graduation timing makes sense** and you are interested in working with them as a postdoc. Junior faculty early in their appointment may also still have startup funds.
 
 ### 2.3 Learn something about the people on your list
 
@@ -155,10 +155,10 @@ Example:
 
 ### 2.5 Prepare your own material
 
-You will be asked, "what do you work on?", many times. Prepare three versions of your answer, and practice each out loud:
+You will be asked, *"what do you work on?"*, many times. Prepare three versions of your answer, and practice each out loud:
 
 - **One sentence** (about ten seconds). What problem, what approach, why it matters. This is what you say when someone asks at a coffee break.
-- **One paragraph** (thirty seconds to a minute). Adds the main result or the current state of the work. This is what you say when they say, "tell me more."
+- **One paragraph** (thirty seconds to a minute). Adds the main result or the current state of the work. This is what you say when they say, *"tell me more."*
 - **A few minutes.** The version you would give at a whiteboard or while walking someone through your poster.
 
 Tailor these to your audience. The one-sentence version for a specialist in your subfield should not be the same as the version for someone in a neighboring field. If your work spans fields, prepare the short version for each audience.
@@ -174,7 +174,7 @@ Prepare a list of questions you want answered. Some are questions for specific p
 - Coordinate with your advisor about who they will introduce you to and which sessions they want you to attend.
 - Know the conference's code of conduct and how to reach the organizers if something goes wrong.
 - Plan for sleep. Conference days are long, and the useful conversations often happen in the evening. Being alert for those matters more than attending every 8 a.m. session.
-- If you are an introvert (also see [Section 4.1](#41-if-approaching-people-is-hard-for-you-introverted-neurodivergent-etc)), plan for time to recharge, but also be disciplined about the *work* of making connections with people. Conferences are an important and necessary part of the academic *job*. Conceptualizing the conference as a professional activity and not purely about socialization may help prepare you for the task. If you choose your conversations well, you will optimize for quality, not quantity, and you will have time to recharge periodically.
+- If you are an introvert, plan for time to recharge, but also be disciplined about the *work* of making connections with people. Conferences are an important and necessary part of the academic *job*. Conceptualizing the conference as a professional activity and not purely about socialization may help prepare you for the task. If you choose your conversations well, you will optimize for quality, not quantity, and you will have time to recharge periodically. See [Section 4.1](#41-if-approaching-people-is-hard-for-you-introverted-neurodivergent-etc) for more details.
 
 ## 3. During the conference
 
@@ -249,7 +249,7 @@ Senior researchers at a conference are usually trying to see many people in a sh
 - **Do not join a conversation that is clearly private**: two people speaking quietly and closely, someone taking a phone call, or an obviously personal discussion. If you cannot tell, wait, or approach later.
 - **Do not follow people.** Do not trail someone from session to session, wait outside a restroom, or appear at their hotel. If you missed them, there will be another break, and you can email afterward.
 - **Meals and evenings are not automatically open.** If your advisor brings you to a dinner, that is an invitation. Inviting yourself to a group dinner you overheard being planned is not. Ask, once, and accept no gracefully.
-- **Respect a "no" the first time**, whether it is to a meeting, a coffee, or a question about their unpublished work.
+- **Respect a *"no"* the first time**, whether it is to a meeting, a coffee, or a question about their unpublished work.
 - **Physical space.** Keep a normal conversational distance. Do not touch people beyond a handshake. This applies to everyone, and it applies more strictly, not less, to people you are enthusiastic about meeting.
 
 If a senior person cuts a conversation short, do not take it personally and do not try to recover it on the spot. A short, polite email afterward will do more than a second approach that afternoon.
@@ -284,7 +284,7 @@ Be similarly realistic about collaboration. People say conferences are for formi
 
 - Introduce people to each other when you can. Connecting two people who should know each other is one of the most valuable things you can do at a conference, and it costs you nothing.
 - Include people standing on the edge of a group.
-- Ask other students about their work with the same seriousness you would give a senior person. Not only will you learn about that student, but you will learn about the lab they are embedded in (and, indirectly, their advisor), and it will be good practice for converations with others.
+- Ask other students about their work with the same seriousness you would give a senior person. Not only will you learn about that student, but you will learn about the lab they are embedded in (and, indirectly, their advisor), and it will be good practice for conversations with others.
 - Go to other students' posters, especially ones with nobody at them.
 - Do not gossip about advisors, labs, or other students. It travels.
 
@@ -307,7 +307,7 @@ Many students, including introverted students and students who are neurodivergen
 Things that help:
 
 - **Prepare scripts.** Write down your openings, your one-sentence description of your work, and two or three questions for each person on your list. It is not cheating to read your notes before walking over to someone.
-- **Set a small, explicit quota.** For example, two new conversations per day. When you hit it, you are done for the day and can attend sessions or rest without guilt. A quota you can meet is better than a vague intention to "talk to people more," and if managing your social energy budget helps ensure your interactions have higher quality, then fewer maybe better than more.
+- **Set a small, explicit quota.** For example, two new conversations per day. When you hit it, you are done for the day and can attend sessions or rest without guilt. A quota you can meet is better than a vague intention to "talk to people more," and if managing your social energy budget helps ensure your interactions have higher quality, then fewer may be better than more.
 - **Use the structured venues.** Poster sessions and post-talk questions have a defined script and a defined end, which makes them much easier than receptions. Do most of your approaching there.
 - **Ask for introductions.** Tell your advisor and lab mates explicitly that you find this hard and would like to be introduced to specific people. Most will be glad to do it.
 - **Give yourself permission to leave.** Have an exit line ready (*"I'm going to catch the next session; it was good to meet you"*) and use it when you have had enough. Ending a conversation early is not rude.
@@ -321,7 +321,7 @@ If keeping a conversation going is the hard part, remember that asking a questio
 
 If you are naturally outgoing, **the risks run the other way.** Talking to people costs you little, which means **you can easily talk too much, too long, and about yourself.**
 
-Behaviors that are negative that you should watch for:
+Problematic behaviors that you should watch for:
 
 - **Talking more than listening.** Aim for less than half of the airtime in a conversation with a senior person. If you notice you have been talking for more than a minute without a question from them, stop and ask one. **Make space for others.**
 - **Steering toward your own work.** Enthusiasm for your project is good, but check whether the last three things you said were about you. Again, **make space for others.**
@@ -349,7 +349,7 @@ If someone gave you a specific task (send me the paper, send me that reference),
 Follow up with anyone who:
 
 - Asked you to send something.
-- Explicitly said, "email me", or gave you their card.
+- Explicitly said, *"email me"*, or gave you their card.
 - Had a substantive conversation with you that you would like to continue.
 
 Do not follow up with everyone you shook hands with. A person you spoke to for ninety seconds in a hallway does not need an email, and receiving one may be slightly puzzling.
