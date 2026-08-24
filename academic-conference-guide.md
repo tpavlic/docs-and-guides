@@ -53,7 +53,7 @@ This guide begins with how to choose which conferences to attend and how they fi
 
 Travel money is limited, and not every conference is worth attending. Over the course of a PhD, most students should aim for a deliberate mix rather than whatever happens to be nearby or wherever the lab went last year. The main types, with notes on how their value differs by discipline, are:
 
-- **The large society meeting in your field.** These are broad, crowded, and expensive, but this is where the field assembles and where most informal hiring conversations happen. The people you most need to meet are far more likely to be there than at any other meeting, but they are also far harder to reach – you will not bump into them by chance, and many other people will be competing for their time. Getting to them takes preparation, an introduction, or a scheduled meeting (see [Sections 2.4](#24-consider-reaching-out-ahead-of-time) and [3.3](#33-approach-with-confidence)). Attend these large meetings at least once early to learn the field and see who works on what, and then attend in the years when you are on the market (i.e., 1–2 years before graduating with your PhD). **In computer science and much of engineering,** the large meetings are also where the respected proceedings are: papers are peer reviewed, published with DOIs by a recognizable society or publisher, and counted as primary publications, and so a paper here is worth more on a CV than a talk anywhere else. **In most of biology,** the same meeting accepts talks and posters from short abstracts (largely first come, first served) and produces nothing citable; the value is for gaining real-time visibility and access to people. **In some engineering fields (and some others),** the society meeting is also an explicit hiring venue, with search-committee members in attendance, candidate events, and sometimes departments collecting CVs at a table for short, non-binding conversations.
+- **The large society meeting in your field.** These are broad, crowded, and expensive, but this is where the field assembles and where most informal hiring conversations happen. The people you most need to meet are far more likely to be there than at any other meeting, but they are also far harder to reach – you will not bump into them by chance, and many other people will be competing for their time. Getting to them takes preparation, an introduction, or a scheduled meeting (see [Sections 2.4](#24-consider-reaching-out-ahead-of-time) and [3.3](#33-approach-with-confidence)). Attend these large meetings at least once early to learn the field and see who works on what, and then attend in the years when you are on the market (i.e., 1–2 years before graduating with your PhD). **In computer science and much of engineering,** the large meetings are also where the respected proceedings are: papers are peer reviewed, published with DOIs by a recognizable society or publisher, and counted as primary publications, and so a paper here is worth more on a CV than a talk anywhere else. **In most of biology,** the same meeting accepts talks and posters from short abstracts (largely first come, first served) and produces nothing citable; the value is for gaining real-time visibility and access to people. **In some engineering fields (and some others),** the society meeting is also an explicit hiring venue, with search-committee members in attendance, candidate events, and sometimes departments collecting CVs at a table for short, non-binding conversations.
 - **Small, specialized meetings and workshops.** These have a few dozen to a few hundred people, all working on something close to your problem. It is easy to find people and easy to fall into conversation with them because the senior people are less overwhelmed and you will see the same faces at every meal; the tradeoff is that there are fewer of them, and the specific people you need may not have come. **In proceedings-based fields,** workshops usually have no proceedings or a lightly reviewed one, and so a paper here counts for less on a CV, but they are good venues for early-stage work and a natural fallback when a paper is not accepted at the main meeting. **In abstract-based fields,** a specialized meeting is often the most useful conference you will attend.
 - **Interdisciplinary venues.** These have the highest chance of being mind opening and allow you to meet the giants of other fields that you might otherwise never encounter. The audience for any one talk is small, the norms are mixed, and the people most relevant to your immediate job prospects are probably not there; the returns are long term, and there is significant short-term opportunity cost to attending. These are the meetings to attend on someone else's money: apply often for the fellowships, scholarships, and travel awards that subsidize attendance at such meetings, and go when one comes through. Check whether the proceedings, if any, are regarded by the departments you are aiming for; often they are not.
 - **Regional and local meetings.** Cheap, low stakes, and good practice for presenting and for the social skills in the rest of this guide. The easiest place to find and talk to people at random, but these meetings have the fewest people worth finding. These often have the lowest of any CV value in any field.
@@ -77,7 +77,7 @@ A rough pattern that works for many students: one big society meeting early, one
 
 Conferences double as interviews, whether or not anyone calls them that. This is true for all three of the main paths out of a PhD:
 
-- **Postdoctoral positions.** Most postdoctoral positions are filled through people the hosting/sponsoring faculty already know, and many are created for a specific person rather than advertised. When a faculty member receives a new grant and starts thinking about whom to hire, the students who come to mind are the ones who asked a sharp question after a talk, walked them through a poster clearly, or followed up with a short, sensible email the year before. **Timing matters.** A student who starts talking to potential hosts in the final months before graduating is usually too late because the positions for that cycle have already been filled or promised. A student with more than about two years left who raises postdoc positions is usually too early because nobody can plan hiring that far out. The window in which to make those conversations explicit is roughly the last one-to-two years of the program, and the conferences in that window deserve the most preparation.
+- **Postdoctoral positions.** Most postdoctoral positions are filled through people the hosting/sponsoring faculty already know, and many are created for a specific person rather than advertised. When a faculty member receives a new grant and starts thinking about whom to hire, the students who come to mind are the ones who asked a sharp question after a talk, walked them through a poster clearly, or followed up with a short, sensible email the year before. **Timing matters.** A student who starts talking to potential hosts in the final months before graduating is usually too late because the positions for that cycle have already been filled or promised. A student with more than about two years left who raises postdoc positions is usually too early because nobody can plan hiring that far out. The window in which to make those conversations explicit is roughly the last one to two years of the program, and the conferences in that window deserve the most preparation.
 
   - **How to start a conversation about postdoctoral opportunities.** First, coordinate with your advisor. An advisor who knows you are looking can seed conversations (*"[Advisor] mentioned you are finishing next year"*) in a way that you cannot do for yourself and may know which people are likely to have positions. When you bring it up yourself, do it in person rather than by cold email, in the timing window described above, and phrase it as interest rather than a request: *"I'll be finishing in about a year and am starting to think about postdocs; your group's work on X is one of the directions I'm most interested in."* That gives the other person room to say *"let's talk more"* or to say nothing, without an awkward refusal. Do not ask whether they have a position in a first conversation, and do not ask by email after meeting once (see [Section 5.4](#54-what-not-to-do)).
 
@@ -93,7 +93,7 @@ Conferences double as interviews, whether or not anyone calls them that. This is
 
 ### 2.1 Decide what you want out of it
 
-Write down two-or-three **concrete goals** before you leave. Examples of goals that are concrete enough to act on:
+Write down two or three **concrete goals** before you leave. Examples of goals that are concrete enough to act on:
 
 - Get feedback on the open question in Chapter 3 from two people who work on related methods.
 - Meet three people at institutions where you might want to do a postdoc.
@@ -114,9 +114,9 @@ Then build a short list of people, ideally 5–10, whom you would most like to t
 
 ### 2.3 Learn something about the people on your list
 
-For each person on your short list, spend fifteen-to-thirty minutes on their recent work. You do not need to read everything; you need enough to ask one specific, informed question. Look at:
+For each person on your short list, spend fifteen to thirty minutes on their recent work. You do not need to read everything; you need enough to ask one specific, informed question. Look at:
 
-- Their two-or-three most recent papers or preprints, especially the **abstracts and figures.**
+- Their two or three most recent papers or preprints, especially the **abstracts and figures.**
 - What they are presenting at this conference.
 - Their lab website, to understand what their group is about and who is in it.
 
@@ -126,7 +126,7 @@ Do the same for the presenters of the sessions you plan to attend. Knowing the c
 
 ### 2.4 Consider reaching out ahead of time
 
-For the two-or-three people you most want to talk to, a ***brief* email** a week or two before the conference is appropriate and often welcome. Senior people's conference schedules fill up quickly, and a message ahead of time makes it much more likely you will actually get their attention.
+For the two or three people you most want to talk to, a ***brief* email** a week or two before the conference is appropriate and often welcome. Senior people's conference schedules fill up quickly, and a message ahead of time makes it much more likely you will actually get their attention.
 
 **Keep the message short** but also **specific**. A good pre-conference email:
 
@@ -138,7 +138,7 @@ For the two-or-three people you most want to talk to, a ***brief* email** a week
 
 Example:
 
-> Subject: Meeting at [Conference] – [your topic] and your recent [their topic] work
+> Subject: Meeting at [Conference] – [your topic] and your recent [their topic] work
 >
 > Dear Dr. [Name],
 >
@@ -205,7 +205,7 @@ Avoid openings that require the other person to do all the work (*"So, what do y
 
 At a large meeting, the people you need to meet will not find you, and waiting for a natural moment usually means the moment never comes. Approach them. Walk up after the talk, join the circle at the break, say your name, and ask your question. You are a colleague in training, not an intruder, and **a polite, direct approach is what senior people expect from students who are serious.** Assertive here means clear and unapologetic, not forceful: state what you want in a sentence, and then let them respond.
 
-When a few minutes in a hallway will not be enough, ask for a meeting. A request for coffee or lunch is entirely reasonable in some cases, particularly in your final two years and with someone whose work is close to yours. Make the request in person if you can, or by a short message if you cannot. Either way, it should show that you know their work and why your interests align with it, and it should be concise enough that someone reading it between sessions on a phone will actually read it and be able to answer with a yes and a time. Two-or-three sentences is right: who you are, what you want to discuss and why it connects to what they do, and a proposed slot or two with an offer to be flexible. A request that asks for their time without saying why, or that takes three paragraphs to say why, will not get an answer, and that is not personal. If they decline or do not reply, thank them if there is an opening to do so, and move on to the next person on your list.
+When a few minutes in a hallway will not be enough, ask for a meeting. A request for coffee or lunch is entirely reasonable in some cases, particularly in your final two years and with someone whose work is close to yours. Make the request in person if you can, or by a short message if you cannot. Either way, it should show that you know their work and why your interests align with it, and it should be concise enough that someone reading it between sessions on a phone will actually read it and be able to answer with a yes and a time. Two or three sentences is right: who you are, what you want to discuss and why it connects to what they do, and a proposed slot or two with an offer to be flexible. A request that asks for their time without saying why, or that takes three paragraphs to say why, will not get an answer, and that is not personal. If they decline or do not reply, thank them if there is an opening to do so, and move on to the next person on your list.
 
 ### 3.4 Talk about their work, specifically
 
@@ -243,7 +243,7 @@ A single, specific compliment is fine and often a good opening (*"your talk was 
 
 Senior researchers at a conference are usually trying to see many people in a short time. Reading and respecting that is one of the most important skills in this guide.
 
-- **Keep first conversations short.** Two-to-five minutes after a talk; ten-to-fifteen minutes at a coffee break unless they clearly want to continue. It is better to end a conversation while it is going well than to let it run until they have to end it.
+- **Keep first conversations short.** Two to five minutes after a talk; ten to fifteen minutes at a coffee break unless they clearly want to continue. It is better to end a conversation while it is going well than to let it run until they have to end it.
 - **Watch for exit cues.** Glancing at a watch or phone, looking past you, shorter answers, shifting posture, *"well, it was nice to meet you."* When you see one, wrap up: *"I should let you go. It was good to talk with you; may I follow up by email?"* Do not make them find a way to leave.
 - **Do not block someone who is trying to reach the speaker or leave the room.** If a line is forming, finish your question and step aside.
 - **Do not join a conversation that is clearly private**: two people speaking quietly and closely, someone taking a phone call, or an obviously personal discussion. If you cannot tell, wait, or approach later.
@@ -276,7 +276,7 @@ Social events are part of the work. The same rules apply as during the day, with
 
 ### 3.10 Other students: colleagues, not the agenda
 
-Conferences are where you get to know your peers, the other students you will keep seeing for the rest of your career. That is valuable over decades, but **it is not what keeps you employed next year.** Your time at a meeting should go mostly toward visibility with the people who may have postdoctoral positions or sit on faculty search committees, and a conference spent entirely in the company of other students, however pleasant, may be a conference wasted. You will get to know students organically – by watching their talks and through brief interactions at sessions and events - without making appointments for it.
+Conferences are where you get to know your peers, the other students you will keep seeing for the rest of your career. That is valuable over decades, but **it is not what keeps you employed next year.** Your time at a meeting should go mostly toward visibility with the people who may have postdoctoral positions or sit on faculty search committees, and a conference spent entirely in the company of other students, however pleasant, may be a conference wasted. You will get to know students organically – by watching their talks and through brief interactions at sessions and events – without making appointments for it.
 
 Be similarly realistic about collaboration. People say conferences are for forming collaborations, and occasionally they are: a group with a dataset that did not pan out but fits an effort of yours is a real opportunity. However, most papers are not born at conferences; academia is competitive, and lead authorship matters on a CV. Spending a lot of conference time scheduling chats with other students about possible joint projects is usually counterproductive because those projects rarely materialize and because it displaces the conversations that do affect your prospects.
 
@@ -306,7 +306,7 @@ Many students, including introverted students and students who are neurodivergen
 
 Things that help:
 
-- **Prepare scripts.** Write down your openings, your one-sentence description of your work, and two-or-three questions for each person on your list. It is not cheating to read your notes before walking over to someone.
+- **Prepare scripts.** Write down your openings, your one-sentence description of your work, and two or three questions for each person on your list. It is not cheating to read your notes before walking over to someone.
 - **Set a small, explicit quota.** For example, two new conversations per day. When you hit it, you are done for the day and can attend sessions or rest without guilt. A quota you can meet is better than a vague intention to "talk to people more," and if managing your social energy budget helps ensure your interactions have higher quality, then fewer maybe better than more.
 - **Use the structured venues.** Poster sessions and post-talk questions have a defined script and a defined end, which makes them much easier than receptions. Do most of your approaching there.
 - **Ask for introductions.** Tell your advisor and lab mates explicitly that you find this hard and would like to be introduced to specific people. Most will be glad to do it.
@@ -356,7 +356,7 @@ Do not follow up with everyone you shook hands with. A person you spoke to for n
 
 ### 5.3 What to write
 
-A follow-up email should be short, specific, and easy to answer or easy to ignore. Aim for four-to-eight sentences.
+A follow-up email should be short, specific, and easy to answer or easy to ignore. Aim for four to eight sentences.
 
 Structure:
 
@@ -367,7 +367,7 @@ Structure:
 
 Example:
 
-> Subject: Following up from [Conference] – [topic]
+> Subject: Following up from [Conference] – [topic]
 >
 > Dear Dr. [Name],
 >
@@ -418,7 +418,7 @@ Tell your advisor what you learned, whom you met, and what follow-ups you have p
 
 ### Before
 
-- [ ] Two-or-three concrete goals written down.
+- [ ] Two or three concrete goals written down.
 - [ ] Program read; sessions marked.
 - [ ] Short list of 5–10 people, with notes on each.
 - [ ] Pre-conference emails sent to two or three people (optional).
