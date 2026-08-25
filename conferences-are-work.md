@@ -17,12 +17,13 @@
   - [3.4 Talk about their work, specifically](#34-talk-about-their-work-specifically)
   - [3.5 Advocating for your own work](#35-advocating-for-your-own-work)
   - [3.6 Compliments and flattery](#36-compliments-and-flattery)
-  - [3.7 Respecting time and boundaries](#37-respecting-time-and-boundaries)
-  - [3.8 Asking questions in sessions](#38-asking-questions-in-sessions)
-  - [3.9 Social events, meals, and alcohol](#39-social-events-meals-and-alcohol)
-  - [3.10 Other students: colleagues, not the agenda](#310-other-students-colleagues-not-the-agenda)
-  - [3.11 Keep notes](#311-keep-notes)
-  - [3.12 If something goes wrong](#312-if-something-goes-wrong)
+  - [3.7 Interpreting the feedback you receive](#37-interpreting-the-feedback-you-receive)
+  - [3.8 Respecting time and boundaries](#38-respecting-time-and-boundaries)
+  - [3.9 Asking questions in sessions](#39-asking-questions-in-sessions)
+  - [3.10 Social events, meals, and alcohol](#310-social-events-meals-and-alcohol)
+  - [3.11 Other students: colleagues, not the agenda](#311-other-students-colleagues-not-the-agenda)
+  - [3.12 Keep notes](#312-keep-notes)
+  - [3.13 If something goes wrong](#313-if-something-goes-wrong)
 - [4. Calibrating to your temperament](#4-calibrating-to-your-temperament)
   - [4.1 If approaching people is hard for you (introverted, neurodivergent, etc.)](#41-if-approaching-people-is-hard-for-you-introverted-neurodivergent-etc)
   - [4.2 If approaching people is easy for you (extroverted, etc.)](#42-if-approaching-people-is-easy-for-you-extroverted-etc)
@@ -110,7 +111,7 @@ Read the full program once it is released, not just the session titles. **For ea
 - Talks in adjacent areas that you want to learn about (attend most).
 - Talks by people you specifically want to meet (attend, and sit where you can reach them afterward).
 
-Then build a short list of people, ideally 5–10, whom you would most like to talk to. **Most of them should be faculty and senior researchers** who might have a postdoc, sit on a search committee, or otherwise matter to your next step, along with a few postdocs and senior students from those groups, who are easier to reach and can tell you how the group actually works. **Other students do not need to be on the list;** you will meet them organically at talks and events (see [Section 3.10](#310-other-students-colleagues-not-the-agenda)). A list made entirely of famous names is a list of people who will be busy, and so **include some mid-career** people (such as those at the rank of Associate Professor) who are doing the work you care about. Also, when planning your list, remember that very senior graduate students or postdocs who will be starting a lab soon **may have startup funds they need to spend** and could be good to talk to **if your own graduation timing makes sense** and you are interested in working with them as a postdoc. Junior faculty early in their appointment may also still have startup funds.
+Then build a short list of people, ideally 5–10, whom you would most like to talk to. **Most of them should be faculty and senior researchers** who might have a postdoc, sit on a search committee, or otherwise matter to your next step, along with a few postdocs and senior students from those groups, who are easier to reach and can tell you how the group actually works. **Other students do not need to be on the list;** you will meet them organically at talks and events (see [Section 3.11](#311-other-students-colleagues-not-the-agenda)). A list made entirely of famous names is a list of people who will be busy, and so **include some mid-career** people (such as those at the rank of Associate Professor) who are doing the work you care about. Also, when planning your list, remember that very senior graduate students or postdocs who will be starting a lab soon **may have startup funds they need to spend** and could be good to talk to **if your own graduation timing makes sense** and you are interested in working with them as a postdoc. Junior faculty early in their appointment may also still have startup funds.
 
 ### 2.3 Learn something about the people on your list
 
@@ -239,7 +240,18 @@ A single, specific compliment is fine and often a good opening (*"your talk was 
 
 **If you admire someone's work, the best way to show it is to demonstrate that you have read it carefully.**
 
-### 3.7 Respecting time and boundaries
+### 3.7 Interpreting the feedback you receive
+
+Faculty are trained to be cordial, positive, and encouraging, especially toward students they have just met. That politeness is the baseline, and you should read feedback against the baseline, not against zero.
+
+- **Baseline praise is politeness, not endorsement** (*"interesting work,"* *"nice talk"*). Genuine enthusiasm looks like engagement: follow-up questions, a reference you should chase down, an offer to continue the conversation.
+- **Negative feedback rarely arrives labeled as such.** It comes as praise that is warm but less than the baseline or as a polite question (*"did you consider...,"* *"I wonder whether this would hold up if..."*). A gentle question about your assumptions may be the most substantive criticism you get all week; write it down and take it seriously.
+- **Learn to unpack the compliment sandwich.** When criticism comes padded between two compliments, the middle is the takeaway; do not let the bread go to your head.
+- You may notice that experts at conferences seem far more positive about your work than your own advisor is. **Do not conclude that your advisor is too critical and can be discounted.** Strangers at a conference are being polite; your advisor is invested enough in you to tell you the truth directly. Later, discuss the feedback you received from others with your advisor to help understand how best to interpret it (see [Section 5.6](#56-report-back)).
+
+The goal is continuous improvement, not validation. The students who grow fastest are the ones who mine encouraging conversations for the criticism hidden inside them.
+
+### 3.8 Respecting time and boundaries
 
 Senior researchers at a conference are usually trying to see many people in a short time. Reading and respecting that is one of the most important skills in this guide.
 
@@ -254,7 +266,7 @@ Senior researchers at a conference are usually trying to see many people in a sh
 
 If a senior person cuts a conversation short, do not take it personally and do not try to recover it on the spot. A short, polite email afterward will do more than a second approach that afternoon.
 
-### 3.8 Asking questions in sessions
+### 3.9 Asking questions in sessions
 
 Asking a question after a talk is a good way to be noticed by everyone in the room, including people not on your list. **It is also a good way to be noticed for the wrong reasons.**
 
@@ -264,7 +276,7 @@ Asking a question after a talk is a good way to be noticed by everyone in the ro
 - Do not use question time to challenge the speaker aggressively. If you think a result is wrong, ask a neutral question (*"how sensitive is this to assumption X?"*) and, if needed, **talk to them afterward.**
 - If you are the speaker, answer briefly, **admit when you do not know,** and **offer to talk afterward** when a question is taking too long. People will respect you for your moderation skills, and you will get an opportunity to take questions from a larger group of people.
 
-### 3.9 Social events, meals, and alcohol
+### 3.10 Social events, meals, and alcohol
 
 Social events are part of the work. The same rules apply as during the day, with a few additions.
 
@@ -274,7 +286,7 @@ Social events are part of the work. The same rules apply as during the day, with
 - The people around you are still the people who will review your papers. Stories told at 11 p.m. get repeated.
 - Keep your phone use to a minimum while in conversation. Looking things up together is fine; scrolling is not.
 
-### 3.10 Other students: colleagues, not the agenda
+### 3.11 Other students: colleagues, not the agenda
 
 Conferences are where you get to know your peers, the other students you will keep seeing for the rest of your career. That is valuable over decades, but **it is not what keeps you employed next year.** Your time at a meeting should go mostly toward visibility with the people who may have postdoctoral positions or sit on faculty search committees, and a conference spent entirely in the company of other students, however pleasant, may be a conference wasted. You will get to know students organically – by watching their talks and through brief interactions at sessions and events – without making appointments for it.
 
@@ -288,11 +300,11 @@ Be similarly realistic about collaboration. People say conferences are for formi
 - Go to other students' posters, especially ones with nobody at them.
 - Do not gossip about advisors, labs, or other students. It travels.
 
-### 3.11 Keep notes
+### 3.12 Keep notes
 
 At the end of each day, write down (or note digitally somehow) whom you talked to, what you discussed, and anything you promised to send or follow up on. **Include a detail or two that will help you remember the conversation.** Two weeks later, you will not remember which of the twenty people you met said the useful thing about your Chapter 3 problem, and the follow-up email that says, *"we talked about X"*, is much stronger than the one that says, *"we met at the conference."* Make sure to save your notes about who you talked to in a conference in case someone reaches out to you and you need to jog your memory before responding.
 
-### 3.12 If something goes wrong
+### 3.13 If something goes wrong
 
 Conferences are professional settings, and the same standards of conduct apply as at your institution. If someone behaves inappropriately toward you, whether harassment, discrimination, or anything that makes you feel unsafe, you are not obligated to handle it alone or to handle it politely. Find the code-of-conduct contact, tell your advisor or another trusted senior person, or leave the situation. **Your advisor (and conference organizers) would much rather hear about a problem during the conference than after it.**
 
@@ -403,7 +415,7 @@ Maintain a simple file or spreadsheet of people you have met at conferences: nam
 
 ### 5.6 Report back
 
-Tell your advisor what you learned, whom you met, and what follow-ups you have planned. Advisors often know the people you met and can tell you which follow-ups are worth pursuing and how. Share useful things you learned with your lab; other students may benefit from a reference or contact you picked up. Share concrete things that may be directly useful to others (*"[Faculty] is starting to work on [subject] and may be looking for postdocs soon."*), not general feelings or vibes (*"I had really good chemistry with [faculty]; they were easy to talk to, and I think they really liked my work."*).
+Tell your advisor what you learned, whom you met, and what follow-ups you have planned. Advisors often know the people you met and can tell you which follow-ups are worth pursuing and how. They can also help you calibrate the feedback you received, telling you which praise was substance and which was politeness (see [Section 3.7](#37-interpreting-the-feedback-you-receive)). Share useful things you learned with your lab; other students may benefit from a reference or contact you picked up. Share concrete things that may be directly useful to others (*"[Faculty] is starting to work on [subject] and may be looking for postdocs soon."*), not general feelings or vibes (*"I had really good chemistry with [faculty]; they were easy to talk to, and I think they really liked my work."*).
 
 ## 6. Checklists
 
